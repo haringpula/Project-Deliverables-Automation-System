@@ -6,7 +6,8 @@
             "lib/**/*.jar"
         ],
         "exclude": [
-            "lib/mysql-connector.jar"
+            "lib/mysql-connector.jar",
+            "lib/junit-jupiter-5.9.0.jar"
         ]
     },
     "cSpell.words": [

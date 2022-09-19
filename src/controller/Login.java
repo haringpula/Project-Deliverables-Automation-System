@@ -8,8 +8,8 @@ package controller;
 import view.LoginFrame;
 
 public class Login{
-    LoginFrame frame = new LoginFrame();
-
+    LoginFrame loginFrame = new LoginFrame();
+    
 
 
 }

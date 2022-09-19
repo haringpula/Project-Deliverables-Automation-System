@@ -11,6 +11,9 @@ public class Secrets {
 	private static String strUser;
 	private static String strPass;
 
+    /**
+     * 
+     */
     public static void getCredentials() {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("src/model/DB_CREDENTIALS.csv"));
@@ -43,7 +46,6 @@ public class Secrets {
 			e.printStackTrace();
 		}
     }
-
     
     /** 
      * @return String
@@ -52,14 +54,12 @@ public class Secrets {
         return strURL;
     }
 
-    
     /** 
      * @return String
      */
     public String getDriverString() {
         return strDriver;
     }
-
     
     /** 
      * @return String
@@ -67,7 +67,6 @@ public class Secrets {
     public String getUsernameString() {
         return strUser;
     }
-
     
     /** 
      * @return String

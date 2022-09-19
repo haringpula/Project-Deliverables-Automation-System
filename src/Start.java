@@ -16,6 +16,10 @@ public class Start{
         DatabaseConnection databaseConnection = new DatabaseConnection();
         databaseConnection.connectToDatabase();
         new Start();
+        Login login = new Login();
+        
+        
+        
 
     }
 
