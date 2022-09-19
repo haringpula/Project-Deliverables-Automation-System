@@ -5,11 +5,11 @@
 
 package controller;
 
-public class Login extends view.LoginFrame{
+import view.LoginFrame;
 
-    protected Login() {
-        super();
-        // TODO: Auto-generated constructor stub
-    }
+public class Login{
+    LoginFrame frame = new LoginFrame();
+
+
 
 }

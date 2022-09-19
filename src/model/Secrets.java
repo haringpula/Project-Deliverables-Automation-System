@@ -4,10 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-
 public class Secrets {
     
-
     private static String strURL;
 	private static String strDriver;
 	private static String strUser;
@@ -37,7 +35,6 @@ public class Secrets {
                     default:
                         break;
                 }
-				// read next line
 				line = reader.readLine();
                 intDiscreteCounter++;
 			}
@@ -47,18 +44,34 @@ public class Secrets {
 		}
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getURLString() {
         return strURL;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getDriverString() {
         return strDriver;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getUsernameString() {
         return strUser;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getPasswordString() {
         return strPass;
     }

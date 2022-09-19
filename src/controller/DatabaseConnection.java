@@ -4,16 +4,22 @@
  */
 package controller;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 import model.Secrets;
 
 
 public class DatabaseConnection {
+    Connection connection = null;
+	Secrets secrets = new Secrets();
+    Statement statement = null;
+    
+    /** 
+     * @return Connection
+     */
     public Connection connectToDatabase() {
-        Connection connection = null;
-	    Secrets secrets = new Secrets();
-        Statement statement = null;
         try {
             Secrets.getCredentials();
             connection = DriverManager.getConnection(
@@ -22,9 +28,6 @@ public class DatabaseConnection {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return connection;
     }
-
-    
 }

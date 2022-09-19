@@ -16,19 +16,21 @@ public class LoginFrame extends JFrame implements ActionListener {
     JPasswordField password_text;
     JButton submit;
 
-    protected LoginFrame() {
+    public LoginFrame() {
         user_label = new JLabel();
         user_label.setText("User Name :");
-        username_text = new JTextField();
+        username_text = new JTextField(10);
         password_label = new JLabel();
         password_label.setText("Password :");
-        password_text = new JPasswordField();
+        password_text = new JPasswordField(10);
         submit = new JButton("SUBMIT");
 
         // FIXME: JPanel has no panel type attribute
         //GroupLayout layout = new GroupLayout(panel);
         panel = new JPanel();
         //panel.setLayout(layout);
+        ImageIcon imageIcon = new ImageIcon("res/icon.png");
+        //panel.setIconImage(imageIcon.getImage());  
         panel.add(user_label);
         panel.add(username_text);
         panel.add(password_label);
@@ -38,12 +40,13 @@ public class LoginFrame extends JFrame implements ActionListener {
         submit.addActionListener(this);
         add(panel);
         setTitle("Login");
-        setSize(450, 350);
+        setSize(250, 250);
         setVisible(true);
     }
-
     
-
+    /** 
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO: Auto-generated method stub
