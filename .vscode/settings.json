@@ -1,13 +1,18 @@
 {
-    "java.project.sourcePaths": ["src"],
+    "java.project.sourcePaths": [
+        "src",
+        "test"
+    ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": {
         "include": [
-            "lib/**/*.jar"
+            "lib/**/*.jar",
+            "test-lib\\**\\*.jar"
         ],
         "exclude": [
             "lib/mysql-connector.jar",
-            "lib/junit-jupiter-5.9.0.jar"
+            "lib/junit-jupiter-5.9.0.jar",
+            "test-lib/junit-platform-console-standalone-1.9.0.jar"
         ]
     },
     "cSpell.words": [

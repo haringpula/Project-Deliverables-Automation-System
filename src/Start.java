@@ -7,7 +7,6 @@ public class Start{
         super();
         // TODO: Auto-generated constructor stub
     }
-
     
     /** 
      * @param args
@@ -16,13 +15,8 @@ public class Start{
         DatabaseConnection databaseConnection = new DatabaseConnection();
         databaseConnection.connectToDatabase();
         new Start();
-        Login login = new Login();
+        new Login();
         
-        
-        
-
     }
-
-    
 
 }

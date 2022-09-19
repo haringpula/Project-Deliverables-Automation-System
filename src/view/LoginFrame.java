@@ -29,7 +29,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         //GroupLayout layout = new GroupLayout(panel);
         panel = new JPanel();
         //panel.setLayout(layout);
-        ImageIcon imageIcon = new ImageIcon("res/icon.png");
+        //ImageIcon imageIcon = new ImageIcon("res/icon.png");
         //panel.setIconImage(imageIcon.getImage());  
         panel.add(user_label);
         panel.add(username_text);
