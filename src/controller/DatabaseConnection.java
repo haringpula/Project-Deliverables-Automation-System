@@ -12,21 +12,21 @@ import model.Secrets;
 
 
 public class DatabaseConnection {
-    Connection connection = null;
-	Secrets secrets = new Secrets();
+    static Connection connection = null;
+	static Secrets secrets = new Secrets();
     Statement statement = null;
     
     /** 
      * @return Connection
      */
-    public Connection connectToDatabase() {
+    public static Connection connectToDatabase() {
         try {
             Secrets.getCredentials();
             connection = DriverManager.getConnection(
                 secrets.getURLString(), secrets.getUsernameString(), secrets.getPasswordString());
-            System.out.println("Success");
         } catch (Exception e) {
             e.printStackTrace();
+            System.exit(1);
         }
         return connection;
     }

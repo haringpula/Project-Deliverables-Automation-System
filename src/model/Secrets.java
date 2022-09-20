@@ -22,6 +22,14 @@ public class Secrets {
 			while (line != null) {
                 switch (intDiscreteCounter) {
                     case 0:
+                        String strFileHash = line.substring(line.lastIndexOf(",") + 1);
+                        Integer intFileHash = strFileHash.hashCode();
+                        Integer hash = csvHashVerifier();
+                        // TODO: csv file hashing
+                        /*if (intFileHash != hash) {
+                            System.out.println("File hash verification failed");
+                            System.exit(2);
+                        }*/
                         break;
                     case 1:
                         strURL = line.substring(line.lastIndexOf(",") + 1);
@@ -45,6 +53,9 @@ public class Secrets {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+    }
+    public static int csvHashVerifier() {
+        return 1918553792;
     }
     
     /** 
