@@ -5,11 +5,50 @@
 
 package controller;
 
-import view.LoginFrame;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+//import view.LoginFrame;
 
 public class Login{
-    LoginFrame loginFrame = new LoginFrame();
-    
+    // HACK: Login implementation without view
+    //LoginFrame loginFrame = new LoginFrame();
+        
+
+    public static void login() {
+        // HACK: Command line login
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter username: ");
+        String strUsername = in.nextLine();
+        System.out.print("Enter password: ");
+        String strPassword = in.nextLine();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        String query = "SELECT * FROM `users` WHERE `user_name` =? AND `user_password` =?";
+        
+        try {
+            ps = DatabaseConnection.connectToDatabase().prepareStatement(query);
+            ps.setString(1, strUsername);
+            ps.setString(2, strPassword);
+            
+            rs = ps.executeQuery();
+            
+            if(rs.next())
+            {
+                System.out.println("Login Succesfully");
+            } else {
+                System.out.println("Login Error");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        in.close();
+        
+    }
 
 
 }
