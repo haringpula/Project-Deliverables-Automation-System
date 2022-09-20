@@ -5,7 +5,6 @@
 
 package controller;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,6 +24,7 @@ public class Login{
         String strUsername = in.nextLine();
         System.out.print("Enter password: ");
         String strPassword = in.nextLine();
+        
         PreparedStatement ps;
         ResultSet rs;
         
@@ -41,10 +41,10 @@ public class Login{
             {
                 System.out.println("Login Succesfully");
             } else {
-                System.out.println("Login Error");
+                System.out.println("Invalid username or password");
             }
         } catch (SQLException ex) {
-            System.out.println(ex);
+            ex.printStackTrace();
         }
         in.close();
         

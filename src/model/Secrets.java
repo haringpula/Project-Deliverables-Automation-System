@@ -23,13 +23,12 @@ public class Secrets {
                 switch (intDiscreteCounter) {
                     case 0:
                         String strFileHash = line.substring(line.lastIndexOf(",") + 1);
-                        Integer intFileHash = strFileHash.hashCode();
-                        Integer hash = csvHashVerifier();
-                        // TODO: csv file hashing
-                        /*if (intFileHash != hash) {
+                        int intFileHash = strFileHash.trim().hashCode();
+                        int intHash = csvHashVerifier();
+                        if (intFileHash != intHash) {
                             System.out.println("File hash verification failed");
                             System.exit(2);
-                        }*/
+                        }
                         break;
                     case 1:
                         strURL = line.substring(line.lastIndexOf(",") + 1);
@@ -54,8 +53,9 @@ public class Secrets {
 			e.printStackTrace();
 		}
     }
-    public static int csvHashVerifier() {
-        return 1918553792;
+    private static int csvHashVerifier() {
+        String HASH_CODE = "k1plinG";
+        return HASH_CODE.hashCode();
     }
     
     /** 
