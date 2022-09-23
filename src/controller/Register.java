@@ -16,7 +16,7 @@ public class Register {
         String strLevel = in.nextLine();
 
         PreparedStatement ps;
-        String query = "INSERT INTO `users`(`user_name`, `password`, `user_level`) VALUES (?,?,?)";
+        String query = "INSERT INTO `users`(`user_name`, `user_password`, `user_level`) VALUES (?,?,?)";
 
         try {
             ps = DatabaseConnection.connectToDatabase().prepareStatement(query);
@@ -32,7 +32,7 @@ public class Register {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        in.close();
+        // in.close();
     }
 
 }

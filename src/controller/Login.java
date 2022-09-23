@@ -15,7 +15,6 @@ import java.util.Scanner;
 public class Login{
     // HACK: Login implementation without view
     //LoginFrame loginFrame = new LoginFrame();
-        
 
     public static void login() {
         // HACK: Command line login
@@ -46,7 +45,7 @@ public class Login{
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        in.close();
+        //in.close();
         
     }
 
