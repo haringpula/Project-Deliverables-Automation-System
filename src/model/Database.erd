@@ -1,0 +1,57 @@
+erdiagram PDAS
+
+notation=crowsfoot
+generate=off
+
+entity Actions {
+   action_id: int key
+   action_name: varchar(45)
+}
+
+entity Categories {
+   category_id: int key
+   category_name: varchar(45)
+}
+
+entity Deliverables {
+   deliverable_id: int key
+   category_id: int key
+   deliverable_name: varchar(45)
+   deliverable_detail: varchar(255)
+   status_id: int key
+}
+
+entity Sessions {
+   session_id: int key
+   user_id: int key
+   action_id: int key
+   session_date: datetime
+}
+
+entity Status {
+   status_id: int key
+   status_name: varchar(45) 
+}
+
+entity Users {
+   user_id: int key
+   user_name: varchar(45)
+   user_password: varchar(45)
+   user_level: int
+}
+
+relationship r1 {
+   Users[1] -> Sessions[?]
+}
+
+relationship r2 {
+   Actions[1] -> Sessions[?]
+}
+
+relationship r3 {
+   Categories[1] -> Deliverables[?]
+}
+
+relationship r4 {
+   Status[1] -> Deliverables[?]
+}

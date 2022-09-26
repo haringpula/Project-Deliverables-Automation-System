@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch RegisterTest",
+            "request": "launch",
+            "mainClass": "controller.RegisterTest",
+            "projectName": "Project Deliverables Automation System_f539e2a1"
+        },
+        {
+            "type": "java",
             "name": "Launch LoginTest",
             "request": "launch",
             "mainClass": "controller.LoginTest",

@@ -11,6 +11,5 @@ import java.awt.event.*;
 
 // XXX: Refactor to only LoginFrame extending boilerplate Frame
 public class LoginFrame extends Frame {
-    
 
 }
