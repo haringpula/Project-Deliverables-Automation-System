@@ -1,3 +1,7 @@
+/*
+ * Register.java created on Tue Sep 27 2022 by King Red Sanchez
+ * Copyright (c) 2022 
+ */
 package controller;
 
 import java.sql.PreparedStatement;
@@ -5,6 +9,9 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Register {
+    /*
+     * 
+     */
     public static void register() {
         // HACK: Command line register
         Scanner in = new Scanner(System.in);

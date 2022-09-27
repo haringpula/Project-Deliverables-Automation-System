@@ -2,7 +2,6 @@
  * Login.java created on Wed Jun 29 2022 by King Red Sanchez
  * Copyright (c) 2022 
  */
-
 package controller;
 
 import java.sql.PreparedStatement;
@@ -16,6 +15,9 @@ public class Login{
     // HACK: Login implementation without view
     //LoginFrame loginFrame = new LoginFrame();
 
+    /** 
+     * 
+     */
     public static void login() {
         // HACK: Command line login
         Scanner in = new Scanner(System.in);

@@ -1,4 +1,2 @@
 DB_CREDENTIALS.csv
-lib/mysql-connector-java-8.0.29/**
-!mysql-connector-java-8.0.29.jar
 test/**

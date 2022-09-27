@@ -1,3 +1,7 @@
+/*
+ * Frame.java created on Tue Sep 27 2022 by King Red Sanchez
+ * Copyright (c) 2022 
+ */
 package view;
 
 import javax.swing.*;

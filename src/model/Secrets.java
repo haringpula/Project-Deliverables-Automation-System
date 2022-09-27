@@ -1,3 +1,7 @@
+/*
+ * Secrets.java created on Tue Sep 20 2022 by King Red Sanchez
+ * Copyright (c) 2022 
+ */
 package model;
 
 import java.io.BufferedReader;
@@ -53,6 +57,10 @@ public class Secrets {
 			e.printStackTrace();
 		}
     }
+    
+    /** 
+     * @return int
+     */
     private static int csvHashVerifier() {
         String HASH_CODE = "k1plinG";
         return HASH_CODE.hashCode();
