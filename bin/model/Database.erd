@@ -30,6 +30,7 @@ entity Sessions {
    user_id: int key
    action_id: int key
    session_date: datetime
+   session_detail: varchar(255)
 }
 
 entity Status {

@@ -10,7 +10,6 @@ import java.sql.Statement;
 
 import model.Secrets;
 
-
 public class DatabaseConnection {
     static Connection connection = null;
 	static Secrets secrets = new Secrets();
