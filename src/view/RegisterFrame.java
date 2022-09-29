@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,6 +28,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
     JPasswordField fldPassword;
     JButton btnRegister;
     JButton btnClear;
+    JComboBox<Integer> cbxLevel;
     JLabel lblLogin;
 
     public RegisterFrame() {
@@ -50,6 +52,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
             fldPassword = new JPasswordField(10);
             btnRegister = new JButton("Register");
             btnClear = new JButton("Clear");
+            cbxLevel = new JComboBox<Integer>();
             lblLogin = new JLabel("Login");
         }
 
@@ -62,6 +65,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
             registerPanel.add(fldPassword);
             registerPanel.add(btnRegister);
             registerPanel.add(btnClear);
+            registerPanel.add(cbxLevel);
             registerPanel.add(lblLogin);
 
             registerFrame.add(registerPanel);
@@ -84,6 +88,8 @@ public class RegisterFrame extends JFrame implements ActionListener {
                     actClear(evtClear);
                 }
             });
+            cbxLevel.addItem(1);
+            cbxLevel.addItem(2);
             lblLogin.setForeground(Color.BLUE.darker());
             lblLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             lblLogin.addMouseListener(new MouseAdapter() {
@@ -117,7 +123,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
      * @param evtLogin
      */
     protected void actLogin(ActionEvent evtLogin) {
-        // TODO: Login
+        // TODO: Register
 
     }
 
