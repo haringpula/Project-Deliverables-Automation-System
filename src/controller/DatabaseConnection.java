@@ -11,9 +11,9 @@ import java.sql.Statement;
 import model.Secrets;
 
 public class DatabaseConnection {
-    static Connection connection = null;
-    static Secrets secrets = new Secrets();
-    Statement statement = null;
+    private static Connection connection = null;
+    private static Secrets secrets = new Secrets();
+    private Statement statement = null;
 
     /**
      * @return Connection
@@ -30,8 +30,29 @@ public class DatabaseConnection {
         return connection;
     }
     
+    /**
+     * @param chrPassword
+     * @return
+     */
     public static String encryptPassword(char[] chrPassword) {
         return Secrets.encryption(String.valueOf(chrPassword));
     }
     
+    /**
+     * @return
+     */
+    public static String getFileHash() {
+        return secrets.getFileHash();
+    }
+
+    /**
+     * @param chrPassword
+     * @return
+     */
+    public static char[] passwordRezero(char[] chrPassword) {
+        for (int i = 0; i < chrPassword.length; i++) {
+            chrPassword[i] = '0';
+        }
+        return chrPassword;
+    }
 }

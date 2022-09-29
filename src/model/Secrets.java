@@ -16,6 +16,7 @@ public class Secrets {
     private static String strDriver;
     private static String strUser;
     private static String strPass;
+    private static String strFileHash;
 
     /**
      * 
@@ -28,8 +29,8 @@ public class Secrets {
             while (line != null) {
                 switch (intDiscreteCounter) {
                     case 0:
-                        String strFileHash = line.substring(line.lastIndexOf(",") + 1);
-                        int intFileHash = strFileHash.trim().hashCode();
+                        strFileHash = line.substring(line.lastIndexOf(",") + 1).trim();
+                        int intFileHash = strFileHash.hashCode();
                         int intHash = csvHashVerifier();
                         if (intFileHash != intHash) {
                             System.out.println("File hash verification failed");
@@ -68,6 +69,10 @@ public class Secrets {
         return HASH_CODE.hashCode();
     }
 
+    public String getFileHash() {
+        return strFileHash;
+    }
+
     /**
      * @return String
      */
@@ -96,7 +101,11 @@ public class Secrets {
         return strPass;
     }
 
-    // from: https://medium.com/javarevisited/handling-passwords-in-java-swing-and-sql-f0e52002a04c
+    /**
+     * from: https://medium.com/javarevisited/handling-passwords-in-java-swing-and-sql-f0e52002a04c
+     * @param password
+     * @return
+     */
     public static String encryption(String password) {
         try {
             // retrieve instance of the encryptor of SHA-256
@@ -115,4 +124,5 @@ public class Secrets {
             return ex.getMessage();
         }
     }
+    
 }
