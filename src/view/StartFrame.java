@@ -8,6 +8,7 @@ package view;
 import java.awt.*;
 import java.awt.event.*;
  
+// TODO: Set things to private if needed
 // XXX: this shit is from oracle documentation, i dont understand this
 public class StartFrame extends Frame implements ActionListener {
     

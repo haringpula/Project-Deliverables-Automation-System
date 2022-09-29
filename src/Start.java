@@ -24,7 +24,7 @@ public class Start {
      * @param args
      */
     public static void main(String[] args) {
-        // TODO: Set Splash Screen
+        // SEE: Set Splash Screen
         // new StartFrame();
         new LoginFrame();
     }

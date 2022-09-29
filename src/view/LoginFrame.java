@@ -23,8 +23,9 @@ import javax.swing.JTextField;
 
 import controller.Login;
 
+// TODO: Set things to private if needed
 public class LoginFrame extends JFrame implements ActionListener {
-    // SEE: Initialize content here
+    // Initialize content here
     JFrame loginFrame;
     CardLayout loginLayout;
     JPanel loginPanel;
@@ -51,7 +52,6 @@ public class LoginFrame extends JFrame implements ActionListener {
      * 
      */
     public void initializeLogin() {
-
         { // Initialize component contents
             loginFrame = new JFrame("Login");
             loginLayout = new CardLayout();
@@ -65,7 +65,6 @@ public class LoginFrame extends JFrame implements ActionListener {
             btnClear = new JButton("Clear");
             cbxLevel = new JComboBox<Integer>();
             lblRegister = new JLabel("Register");
-            
         }
 
         { // Setting up to the frame and panel
@@ -133,7 +132,6 @@ public class LoginFrame extends JFrame implements ActionListener {
      * @param evtLogin
      */
     protected void actLogin(ActionEvent evtLogin) {
-        // TODO: Login
         /*
          * -1 Plain
          * 0 Error
@@ -146,8 +144,11 @@ public class LoginFrame extends JFrame implements ActionListener {
         intLevel = (int) cbxLevel.getSelectedItem();
         if (Login.login(strUsername, chrPassword, intLevel)) {
             JOptionPane.showMessageDialog(null, "Login Successfully", "PDAS", 1);
+            chrPassword = Login.passwordRezero(chrPassword);
+            loginFrame.dispose();
+            new MainFrame();
         } else {
-            JOptionPane.showMessageDialog(null, "Login Failed", "PDAS", 1);
+            JOptionPane.showMessageDialog(null, "Login Failed", "PDAS", 0);
         }
 
     }
@@ -165,7 +166,7 @@ public class LoginFrame extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO: Auto-generated method stub
+        // Auto-generated method stub
 
     }
 

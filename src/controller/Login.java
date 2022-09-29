@@ -19,7 +19,6 @@ public class Login extends DatabaseConnection {
      * @return
      */
     public static boolean login(String strUsername, char[] chrPassword, int intLevel) {
-
         PreparedStatement sqlStatement;
         ResultSet sqlResult;
         String strPassword = encryptPassword(chrPassword);
@@ -49,8 +48,6 @@ public class Login extends DatabaseConnection {
     }
 
 
-    public static void name() {
-        // TODO: Password array rezero
-    }
+    
 
 }
