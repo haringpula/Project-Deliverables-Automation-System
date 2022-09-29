@@ -34,7 +34,6 @@ public class Login extends DatabaseConnection {
 
             rs = ps.executeQuery();
 
-            // BUG: implement
             while (rs.next()) {
                 Session.strUsername = rs.getString("user_name");
                 Session.intLevel = rs.getInt("user_level");
