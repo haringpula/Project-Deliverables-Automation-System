@@ -1,19 +1,22 @@
+# Project-Deliverables-Automation-System
+
 ## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This is a project deliverables tracker. made with Java, MySQL, and JUnit. Still a work in progress.
 
 ## Folder Structure
 
-The workspace contains two folders by default, where:
+The workspace contains these folders:
 
 - `src`: the folder to maintain sources
 - `lib`: the folder to maintain dependencies
+- `res`: the folder to maintain resources
+- `test`: the folder to maintain test cases
 
 Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+> For some editor specific settings, open `.vscode/settings.json` and update the related settings there.
 
 ## Dependency Management
 
 The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
-# Project-Deliverables-Automation-System
