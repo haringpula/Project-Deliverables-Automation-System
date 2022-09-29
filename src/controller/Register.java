@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class Register {
+public class Register extends DatabaseConnection {
     /*
      * 
      */
@@ -26,7 +26,7 @@ public class Register {
         String query = "INSERT INTO `users`(`user_name`, `user_password`, `user_level`) VALUES (?,?,?)";
 
         try {
-            ps = DatabaseConnection.connectToDatabase().prepareStatement(query);
+            ps = connectToDatabase().prepareStatement(query);
 
             ps.setString(1, strUsername);
             ps.setString(2, strPassword);
