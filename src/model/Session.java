@@ -4,11 +4,15 @@
  */
 package model;
 
-public class Session {
-    public static String strAction = "";
-    public static String strUsername = "";
-    public static String strPassword = "";
-    public static int intLevel = 0;
-    public static String sqlDate = "NOW()";
-    public static String strDetail = "";
+import controller.DatabaseConnection;
+
+public record Session(
+        int intAction,
+        int intUsername,
+        int intLevel0,
+        String sqlDate,
+        String strDetail) {
+    public static void logSession() {
+        // TODO: Log session, only take a few things and do sql statement here with the now()
+    }
 }
