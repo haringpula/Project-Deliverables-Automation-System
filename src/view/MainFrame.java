@@ -7,12 +7,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-// TODO: Set things to private if needed
 public class MainFrame extends JFrame implements ActionListener {
     // Initialize content here
-    JFrame registerFrame;
-    CardLayout registerLayout;
-    JPanel registerPanel;
+    private JFrame registerFrame;
+    private CardLayout registerLayout;
+    private JPanel registerPanel;
 
     public MainFrame() {
         initializeMain();

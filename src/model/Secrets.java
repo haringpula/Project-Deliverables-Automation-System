@@ -12,11 +12,12 @@ import java.security.MessageDigest;
 
 public class Secrets {
 
+    private static String HASH_CODE = "k1plinG";;
+    private static String strFileHash;
     private static String strURL;
     private static String strDriver;
     private static String strUser;
     private static String strPass;
-    private static String strFileHash;
 
     /**
      * 
@@ -29,13 +30,7 @@ public class Secrets {
             while (line != null) {
                 switch (intDiscreteCounter) {
                     case 0:
-                        strFileHash = line.substring(line.lastIndexOf(",") + 1).trim();
-                        int intFileHash = strFileHash.hashCode();
-                        int intHash = csvHashVerifier();
-                        if (intFileHash != intHash) {
-                            System.out.println("File hash verification failed");
-                            System.exit(2);
-                        }
+                        strFileHash = line.substring(line.lastIndexOf(",") + 1);
                         break;
                     case 1:
                         strURL = line.substring(line.lastIndexOf(",") + 1);
@@ -62,15 +57,22 @@ public class Secrets {
     }
 
     /**
-     * @return int
+     * @return boolean
      */
-    private static int csvHashVerifier() {
-        String HASH_CODE = "k1plinG";
-        return HASH_CODE.hashCode();
+    public static boolean csvHashVerifier() {
+        int intFileHash = strFileHash.hashCode();
+        int intHash = HASH_CODE.hashCode();
+        if (intFileHash != intHash) {
+            return false;
+        }
+        return true;
     }
 
-    public String getFileHash() {
-        return strFileHash;
+    /**
+     * @return String
+     */
+    public String getHash() {
+        return HASH_CODE;
     }
 
     /**
@@ -102,7 +104,9 @@ public class Secrets {
     }
 
     /**
-     * from: https://medium.com/javarevisited/handling-passwords-in-java-swing-and-sql-f0e52002a04c
+     * from:
+     * https://medium.com/javarevisited/handling-passwords-in-java-swing-and-sql-f0e52002a04c
+     * 
      * @param password
      * @return
      */
@@ -124,5 +128,5 @@ public class Secrets {
             return ex.getMessage();
         }
     }
-    
+
 }

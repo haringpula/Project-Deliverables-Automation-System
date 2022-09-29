@@ -26,22 +26,19 @@ import controller.Login;
 // TODO: Set things to private if needed
 public class LoginFrame extends JFrame implements ActionListener {
     // Initialize content here
-    JFrame loginFrame;
-    CardLayout loginLayout;
-    JPanel loginPanel;
-    JLabel lblTitle;
-    JLabel lblUsername;
-    JTextField fldUsername;
-    JLabel lblPassword;
-    JPasswordField fldPassword;
-    JButton btnLogin;
-    JButton btnClear;
-    JLabel lblRegister;
-    JComboBox<Integer> cbxLevel;
-    String strUsername;
-    char[] chrPassword;
-    int intLevel;
-    int[] intSelections;
+    private JFrame loginFrame;
+    private CardLayout loginLayout;
+    private JPanel loginPanel;
+    private JLabel lblTitle;
+    private JLabel lblUsername;
+    private JTextField fldUsername;
+    private JLabel lblPassword;
+    private JPasswordField fldPassword;
+    private JComboBox<Integer> cbxLevel;
+    private JButton btnLogin;
+    private JButton btnClear;
+    private JLabel lblRegister;
+    
 
     public LoginFrame() {
         initializeLogin();
@@ -61,9 +58,9 @@ public class LoginFrame extends JFrame implements ActionListener {
             fldUsername = new JTextField("", 10);
             lblPassword = new JLabel("Password: ");
             fldPassword = new JPasswordField(10);
+            cbxLevel = new JComboBox<Integer>();
             btnLogin = new JButton("Login");
             btnClear = new JButton("Clear");
-            cbxLevel = new JComboBox<Integer>();
             lblRegister = new JLabel("Register");
         }
 
@@ -74,9 +71,9 @@ public class LoginFrame extends JFrame implements ActionListener {
             loginPanel.add(fldUsername);
             loginPanel.add(lblPassword);
             loginPanel.add(fldPassword);
+            loginPanel.add(cbxLevel);
             loginPanel.add(btnLogin);
             loginPanel.add(btnClear);
-            loginPanel.add(cbxLevel);
             loginPanel.add(lblRegister);
 
             loginFrame.add(loginPanel);
@@ -89,6 +86,8 @@ public class LoginFrame extends JFrame implements ActionListener {
         { // Initialize functionalities and layouts
             lblUsername.setLabelFor(fldUsername);
             lblPassword.setLabelFor(fldPassword);
+            cbxLevel.addItem(1);
+            cbxLevel.addItem(2);
             btnLogin.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evtLogin) {
                     actLogin(evtLogin);
@@ -99,12 +98,9 @@ public class LoginFrame extends JFrame implements ActionListener {
                     actClear(evtClear);
                 }
             });
-            cbxLevel.addItem(1);
-            cbxLevel.addItem(2);
             lblRegister.setForeground(Color.BLUE.darker());
             lblRegister.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             lblRegister.addMouseListener(new MouseAdapter() {
-
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     // the user clicks on the label
@@ -139,12 +135,12 @@ public class LoginFrame extends JFrame implements ActionListener {
          * 2 Warning
          * 3 Question
          */
-        strUsername = fldUsername.getText();
-        chrPassword = fldPassword.getPassword();
-        intLevel = (int) cbxLevel.getSelectedItem();
+        String strUsername = fldUsername.getText();
+        char[] chrPassword = fldPassword.getPassword();
+        int intLevel = (int) cbxLevel.getSelectedItem();
         if (Login.login(strUsername, chrPassword, intLevel)) {
-            JOptionPane.showMessageDialog(null, "Login Successfully", "PDAS", 1);
             chrPassword = Login.passwordRezero(chrPassword);
+            JOptionPane.showMessageDialog(null, "Login Successfully", "PDAS", 1);
             loginFrame.dispose();
             new MainFrame();
         } else {
@@ -159,6 +155,7 @@ public class LoginFrame extends JFrame implements ActionListener {
     private void actClear(ActionEvent evtClear) {
         fldUsername.setText("");
         fldPassword.setText("");
+        cbxLevel.setSelectedIndex(0);
     }
 
     /**

@@ -13,7 +13,7 @@
  */
 
 import view.LoginFrame;
-//import view.StartFrame;
+import view.StartFrame;
 
 public class Start {
     Start() {
@@ -24,8 +24,7 @@ public class Start {
      * @param args
      */
     public static void main(String[] args) {
-        // SEE: Set Splash Screen
-        // new StartFrame();
+        new StartFrame();
         new LoginFrame();
     }
 

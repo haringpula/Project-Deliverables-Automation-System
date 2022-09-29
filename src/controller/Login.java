@@ -12,9 +12,10 @@ import model.Session;
 
 public class Login extends DatabaseConnection {
 
+    
     /**
      * @param strUsername
-     * @param strPassword
+     * @param chrPassword
      * @param intLevel
      * @return
      */
@@ -22,7 +23,6 @@ public class Login extends DatabaseConnection {
         PreparedStatement sqlStatement;
         ResultSet sqlResult;
         String strPassword = encryptPassword(chrPassword);
-        System.out.println(strPassword);
 
         String query = "SELECT * FROM `users` WHERE `user_name` =? AND `user_password` =? AND `user_level` =?";
 

@@ -6,14 +6,12 @@ package controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
 
 import model.Secrets;
 
 public class DatabaseConnection {
     private static Connection connection = null;
     private static Secrets secrets = new Secrets();
-    private Statement statement = null;
 
     /**
      * @return Connection
@@ -38,11 +36,14 @@ public class DatabaseConnection {
         return Secrets.encryption(String.valueOf(chrPassword));
     }
     
-    /**
-     * @return
-     */
-    public static String getFileHash() {
-        return secrets.getFileHash();
+    public static boolean csvHashVerifier(String strInputHash) {
+        int intInputHash = strInputHash.hashCode();
+        String strHash = secrets.getHash();
+        int intHash = strHash.hashCode();
+        if (intInputHash != intHash) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -55,4 +56,5 @@ public class DatabaseConnection {
         }
         return chrPassword;
     }
+
 }
