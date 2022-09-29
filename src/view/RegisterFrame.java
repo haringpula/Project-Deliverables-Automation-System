@@ -16,8 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+// TODO: Set things to private if needed
 public class RegisterFrame extends JFrame implements ActionListener {
-    // SEE: Initialize content here
+    // Initialize content here
     JFrame registerFrame;
     CardLayout registerLayout;
     JPanel registerPanel;
@@ -140,7 +141,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO: Auto-generated method stub
+        // Auto-generated method stub
 
     }
 
