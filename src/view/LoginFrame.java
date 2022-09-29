@@ -13,11 +13,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import controller.Login;
 
 public class LoginFrame extends JFrame implements ActionListener {
     // SEE: Initialize content here
@@ -32,6 +36,11 @@ public class LoginFrame extends JFrame implements ActionListener {
     JButton btnLogin;
     JButton btnClear;
     JLabel lblRegister;
+    JComboBox<Integer> cbxLevel;
+    String strUsername;
+    char[] chrPassword;
+    int intLevel;
+    int[] intSelections;
 
     public LoginFrame() {
         initializeLogin();
@@ -54,7 +63,9 @@ public class LoginFrame extends JFrame implements ActionListener {
             fldPassword = new JPasswordField(10);
             btnLogin = new JButton("Login");
             btnClear = new JButton("Clear");
+            cbxLevel = new JComboBox<Integer>();
             lblRegister = new JLabel("Register");
+            
         }
 
         { // Setting up to the frame and panel
@@ -66,6 +77,7 @@ public class LoginFrame extends JFrame implements ActionListener {
             loginPanel.add(fldPassword);
             loginPanel.add(btnLogin);
             loginPanel.add(btnClear);
+            loginPanel.add(cbxLevel);
             loginPanel.add(lblRegister);
 
             loginFrame.add(loginPanel);
@@ -88,6 +100,8 @@ public class LoginFrame extends JFrame implements ActionListener {
                     actClear(evtClear);
                 }
             });
+            cbxLevel.addItem(1);
+            cbxLevel.addItem(2);
             lblRegister.setForeground(Color.BLUE.darker());
             lblRegister.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             lblRegister.addMouseListener(new MouseAdapter() {
@@ -95,9 +109,8 @@ public class LoginFrame extends JFrame implements ActionListener {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     // the user clicks on the label
-                    loginFrame.dispose();;
+                    loginFrame.dispose();
                     new RegisterFrame();
-
                 }
 
                 @Override
@@ -114,7 +127,6 @@ public class LoginFrame extends JFrame implements ActionListener {
             });
         }
 
-        
     }
 
     /**
@@ -122,6 +134,21 @@ public class LoginFrame extends JFrame implements ActionListener {
      */
     protected void actLogin(ActionEvent evtLogin) {
         // TODO: Login
+        /*
+         * -1 Plain
+         * 0 Error
+         * 1 Information
+         * 2 Warning
+         * 3 Question
+         */
+        strUsername = fldUsername.getText();
+        chrPassword = fldPassword.getPassword();
+        intLevel = (int) cbxLevel.getSelectedItem();
+        if (Login.login(strUsername, chrPassword, intLevel)) {
+            JOptionPane.showMessageDialog(null, "Login Successfully", "PDAS", 1);
+        } else {
+            JOptionPane.showMessageDialog(null, "Login Failed", "PDAS", 1);
+        }
 
     }
 

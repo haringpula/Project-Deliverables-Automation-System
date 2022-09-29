@@ -12,31 +12,33 @@ import model.Session;
 
 public class Login extends DatabaseConnection {
 
-    
     /**
      * @param strUsername
      * @param strPassword
      * @param intLevel
      * @return
      */
-    public boolean login(String strUsername, String strPassword, int intLevel) {
+    public static boolean login(String strUsername, char[] chrPassword, int intLevel) {
 
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement sqlStatement;
+        ResultSet sqlResult;
+        String strPassword = encryptPassword(chrPassword);
+        System.out.println(strPassword);
 
         String query = "SELECT * FROM `users` WHERE `user_name` =? AND `user_password` =? AND `user_level` =?";
 
         try {
-            ps = connectToDatabase().prepareStatement(query);
-            ps.setString(1, strUsername);
-            ps.setString(2, strPassword);
-            ps.setInt(3, intLevel);
+            sqlStatement = connectToDatabase().prepareStatement(query);
+            sqlStatement.setString(1, strUsername);
+            sqlStatement.setString(2, strPassword);
+            sqlStatement.setInt(3, intLevel);
 
-            rs = ps.executeQuery();
+            sqlResult = sqlStatement.executeQuery();
 
-            while (rs.next()) {
-                Session.strUsername = rs.getString("user_name");
-                Session.intLevel = rs.getInt("user_level");
+            while (sqlResult.next()) {
+                // BUG: Session is changed to record
+                //Session.strUsername = sqlResult.getString("user_name");
+                //Session.intLevel = sqlResult.getInt("user_level");
                 return true;
             }
         } catch (SQLException ex) {
@@ -44,6 +46,11 @@ public class Login extends DatabaseConnection {
         }
         return false;
 
+    }
+
+
+    public static void name() {
+        // TODO: Password array rezero
     }
 
 }
