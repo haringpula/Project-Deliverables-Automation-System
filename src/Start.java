@@ -13,7 +13,7 @@
  */
 
 import view.LoginFrame;
-import view.StartFrame;
+//import view.StartFrame;
 
 public class Start {
     Start() {
