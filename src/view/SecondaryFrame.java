@@ -7,13 +7,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class MainFrame extends JFrame implements ActionListener {
+public class SecondaryFrame extends JFrame implements ActionListener {
     // Initialize content here
     private JFrame secondaryFrame;
     private CardLayout secondaryLayout;
     private JPanel secondaryPanel;
 
-    public MainFrame() {
+    public SecondaryFrame() {
         initializeMain();
 
     }

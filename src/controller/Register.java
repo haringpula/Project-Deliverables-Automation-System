@@ -19,9 +19,9 @@ public class Register extends DatabaseConnection {
         PreparedStatement sqlStatement;
         int intResult;
         String strPassword = encryptPassword(chrPassword);
-        
+
         String query = "INSERT INTO `users`(`user_name`, `user_password`, `user_level`) VALUES (?,?,?)";
-        
+
         try {
             sqlStatement = connectToDatabase().prepareStatement(query);
 
@@ -42,6 +42,13 @@ public class Register extends DatabaseConnection {
         return false;
     }
 
+    
+    /** 
+     * @param strUsername
+     * @param chrPassword
+     * @param chrPassword2
+     * @return String
+     */
     public static String credentialValidator(String strUsername, char[] chrPassword, char[] chrPassword2) {
         String strError = "";
         String strHash = encryptPassword(chrPassword);
@@ -66,7 +73,8 @@ public class Register extends DatabaseConnection {
             if (Character.isDigit(chrPassword[i])) {
                 boolNumber = true;
             }
-            if (!Character.isDigit(chrPassword[i]) && !Character.isLetter(chrPassword[i]) && !Character.isSpaceChar(chrPassword[i])) {
+            if (!Character.isDigit(chrPassword[i]) && !Character.isLetter(chrPassword[i])
+                    && !Character.isSpaceChar(chrPassword[i])) {
                 boolSymbol = true;
             }
         }
@@ -81,7 +89,5 @@ public class Register extends DatabaseConnection {
         }
         return strError;
     }
-
-    
 
 }

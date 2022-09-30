@@ -12,7 +12,6 @@ import model.Session;
 
 public class Login extends DatabaseConnection {
 
-    
     /**
      * @param strUsername
      * @param chrPassword
@@ -36,8 +35,8 @@ public class Login extends DatabaseConnection {
 
             while (sqlResult.next()) {
                 // BUG: Session is changed to record
-                //Session.strUsername = sqlResult.getString("user_name");
-                //Session.intLevel = sqlResult.getInt("user_level");
+                // Session.strUsername = sqlResult.getString("user_name");
+                // Session.intLevel = sqlResult.getInt("user_level");
                 return true;
             }
         } catch (SQLException ex) {
@@ -46,8 +45,5 @@ public class Login extends DatabaseConnection {
         return false;
 
     }
-
-
-    
 
 }

@@ -20,6 +20,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 import model.Secrets;
 
@@ -41,6 +42,11 @@ public class StartFrame extends Frame implements ActionListener {
 
     public StartFrame() {
         super("SplashScreen demo");
+        try {
+			UIManager.setLookAndFeel(new com.jtattoo.plaf.hifi.HiFiLookAndFeel());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
         setSize(300, 200);
         setLayout(new BorderLayout());
         Menu m1 = new Menu("File");

@@ -32,6 +32,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
     private JPasswordField fldPassword;
     private JLabel lblPassword2;
     private JPasswordField fldPassword2;
+    private JLabel lblLevel;
     private JComboBox<Integer> cbxLevel;
     private JButton btnRegister;
     private JButton btnClear;
@@ -46,7 +47,6 @@ public class RegisterFrame extends JFrame implements ActionListener {
      * 
      */
     public void initializeRegister() {
-
         { // Initialize component contents
             registerFrame = new JFrame("Register");
             registerLayout = new CardLayout();
@@ -58,37 +58,20 @@ public class RegisterFrame extends JFrame implements ActionListener {
             fldPassword = new JPasswordField(10);
             lblPassword2 = new JLabel("Repeat Password: ");
             fldPassword2 = new JPasswordField(10);
+            lblLevel = new JLabel("Level");
             cbxLevel = new JComboBox<Integer>();
             btnRegister = new JButton("Register");
             btnClear = new JButton("Clear");
             lblLogin = new JLabel("Login");
         }
 
-        { // Setting up to the frame and panel
-            registerFrame.setLayout(registerLayout);
-            registerPanel.add(lblTitle);
-            registerPanel.add(lblUsername);
-            registerPanel.add(fldUsername);
-            registerPanel.add(lblPassword);
-            registerPanel.add(fldPassword);
-            registerPanel.add(lblPassword2);
-            registerPanel.add(fldPassword2);
-            registerPanel.add(cbxLevel);
-            registerPanel.add(btnRegister);
-            registerPanel.add(btnClear);
-            registerPanel.add(lblLogin);
-
-            registerFrame.add(registerPanel);
-            registerFrame.setSize(250, 250);
-            registerFrame.setLocationRelativeTo(null);
-            registerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            registerFrame.setVisible(true);
-        }
-
         { // Initialize functionalities and layouts
             lblUsername.setLabelFor(fldUsername);
             lblPassword.setLabelFor(fldPassword);
             lblPassword2.setLabelFor(fldPassword2);
+            lblLevel.setLabelFor(cbxLevel);
+            cbxLevel.addItem(1);
+            cbxLevel.addItem(2);
             btnRegister.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evtRegister) {
                     actRegister(evtRegister);
@@ -99,13 +82,10 @@ public class RegisterFrame extends JFrame implements ActionListener {
                     actClear(evtClear);
                 }
             });
-            cbxLevel.addItem(1);
-            cbxLevel.addItem(2);
             cbxLevel.setSelectedIndex(1);
-            lblLogin.setForeground(Color.BLUE.darker());
+            lblLogin.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
             lblLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             lblLogin.addMouseListener(new MouseAdapter() {
-
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     // the user clicks on the label
@@ -117,15 +97,36 @@ public class RegisterFrame extends JFrame implements ActionListener {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     // the mouse has entered the label
-                    lblLogin.setText("<html><a href=''>Login</a></html>");
+                    lblLogin.setForeground(Color.DARK_GRAY);
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e) {
                     // the mouse has exited the label
-                    lblLogin.setText("Login");
-                }
+                    lblLogin.setForeground(Color.WHITE);                }
             });
+        }
+
+        { // Setting up to the frame and panel
+            registerFrame.setLayout(registerLayout);
+            registerPanel.add(lblTitle);
+            registerPanel.add(lblUsername);
+            registerPanel.add(fldUsername);
+            registerPanel.add(lblPassword);
+            registerPanel.add(fldPassword);
+            registerPanel.add(lblPassword2);
+            registerPanel.add(fldPassword2);
+            registerPanel.add(lblLevel);
+            registerPanel.add(cbxLevel);
+            registerPanel.add(btnRegister);
+            registerPanel.add(btnClear);
+            registerPanel.add(lblLogin);
+
+            registerFrame.add(registerPanel);
+            registerFrame.setSize(250, 250);
+            registerFrame.setLocationRelativeTo(null);
+            registerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            registerFrame.setVisible(true);
         }
 
     }

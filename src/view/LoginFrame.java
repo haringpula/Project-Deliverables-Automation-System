@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -23,7 +24,6 @@ import javax.swing.JTextField;
 
 import controller.Login;
 
-// TODO: Set things to private if needed
 public class LoginFrame extends JFrame implements ActionListener {
     // Initialize content here
     private JFrame loginFrame;
@@ -34,12 +34,15 @@ public class LoginFrame extends JFrame implements ActionListener {
     private JTextField fldUsername;
     private JLabel lblPassword;
     private JPasswordField fldPassword;
+    private JLabel lblLevel;
     private JComboBox<Integer> cbxLevel;
     private JButton btnLogin;
     private JButton btnClear;
     private JLabel lblRegister;
-    
 
+    /**
+     * 
+     */
     public LoginFrame() {
         initializeLogin();
 
@@ -58,34 +61,17 @@ public class LoginFrame extends JFrame implements ActionListener {
             fldUsername = new JTextField("", 10);
             lblPassword = new JLabel("Password: ");
             fldPassword = new JPasswordField(10);
+            lblLevel = new JLabel("Level");
             cbxLevel = new JComboBox<Integer>();
             btnLogin = new JButton("Login");
             btnClear = new JButton("Clear");
             lblRegister = new JLabel("Register");
         }
 
-        { // Setting up to the frame and panel
-            loginFrame.setLayout(loginLayout);
-            loginPanel.add(lblTitle);
-            loginPanel.add(lblUsername);
-            loginPanel.add(fldUsername);
-            loginPanel.add(lblPassword);
-            loginPanel.add(fldPassword);
-            loginPanel.add(cbxLevel);
-            loginPanel.add(btnLogin);
-            loginPanel.add(btnClear);
-            loginPanel.add(lblRegister);
-
-            loginFrame.add(loginPanel);
-            loginFrame.setSize(250, 250);
-            loginFrame.setLocationRelativeTo(null);
-            loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            loginFrame.setVisible(true);
-        }
-
         { // Initialize functionalities and layouts
             lblUsername.setLabelFor(fldUsername);
             lblPassword.setLabelFor(fldPassword);
+            lblLevel.setLabelFor(cbxLevel);
             cbxLevel.addItem(1);
             cbxLevel.addItem(2);
             btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +84,7 @@ public class LoginFrame extends JFrame implements ActionListener {
                     actClear(evtClear);
                 }
             });
-            lblRegister.setForeground(Color.BLUE.darker());
+            lblRegister.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
             lblRegister.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             lblRegister.addMouseListener(new MouseAdapter() {
                 @Override
@@ -111,15 +97,36 @@ public class LoginFrame extends JFrame implements ActionListener {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     // the mouse has entered the label
-                    lblRegister.setText("<html><a href=''>Register</a></html>");
+
+                    lblRegister.setForeground(Color.DARK_GRAY);
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e) {
                     // the mouse has exited the label
-                    lblRegister.setText("Register");
+                    lblRegister.setForeground(Color.WHITE);
                 }
             });
+        }
+
+        { // Setting up to the frame and panel
+            loginFrame.setLayout(loginLayout);
+            loginPanel.add(lblTitle);
+            loginPanel.add(lblUsername);
+            loginPanel.add(fldUsername);
+            loginPanel.add(lblPassword);
+            loginPanel.add(fldPassword);
+            loginPanel.add(lblLevel);
+            loginPanel.add(cbxLevel);
+            loginPanel.add(btnLogin);
+            loginPanel.add(btnClear);
+            loginPanel.add(lblRegister);
+
+            loginFrame.add(loginPanel);
+            loginFrame.setSize(250, 250);
+            loginFrame.setLocationRelativeTo(null);
+            loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            loginFrame.setVisible(true);
         }
 
     }
@@ -142,7 +149,12 @@ public class LoginFrame extends JFrame implements ActionListener {
             chrPassword = Login.passwordRezero(chrPassword);
             JOptionPane.showMessageDialog(null, "Login Successfully", "PDAS", 1);
             loginFrame.dispose();
-            new MainFrame();
+            if (intLevel == 1) {
+                new MainFrame();
+            }
+            if (intLevel == 2) {
+                new SecondaryFrame();
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Login Failed", "PDAS", 0);
         }
