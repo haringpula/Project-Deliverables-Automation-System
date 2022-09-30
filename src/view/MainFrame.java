@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+
 public class MainFrame extends JFrame implements ActionListener {
     // Initialize content here
     private JFrame secondaryFrame;
@@ -34,7 +35,7 @@ public class MainFrame extends JFrame implements ActionListener {
             secondaryFrame.setLayout(secondaryLayout);
 
             secondaryFrame.add(secondaryPanel);
-            secondaryFrame.setSize(250, 250);
+            secondaryFrame.setSize(650, 900);
             secondaryFrame.setLocationRelativeTo(null);
             secondaryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             secondaryFrame.setVisible(true);

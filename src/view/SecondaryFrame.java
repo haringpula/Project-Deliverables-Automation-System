@@ -34,7 +34,7 @@ public class SecondaryFrame extends JFrame implements ActionListener {
             secondaryFrame.setLayout(secondaryLayout);
 
             secondaryFrame.add(secondaryPanel);
-            secondaryFrame.setSize(250, 250);
+            secondaryFrame.setSize(700, 500);
             secondaryFrame.setLocationRelativeTo(null);
             secondaryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             secondaryFrame.setVisible(true);
