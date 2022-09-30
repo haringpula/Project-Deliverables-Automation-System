@@ -41,7 +41,6 @@ public class Login extends DatabaseConnection {
             sqlResult = sqlStatement.executeQuery();
 
             while (sqlResult.next()) {
-                // BUG: Session is changed to record
                 intUser = sqlResult.getInt("user_id");
                 strName = sqlResult.getString("user_name");
                 strLevel = String.valueOf(intLevel);
@@ -54,9 +53,7 @@ public class Login extends DatabaseConnection {
 
     }
 
-    
-
-    public static void logSession() {
+    public static void logSessionLogin() {
         strDetail += strName;
         strDetail += " level (";
         strDetail += strLevel;

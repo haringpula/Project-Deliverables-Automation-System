@@ -150,11 +150,11 @@ public class LoginFrame extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "Login Successfully", "PDAS", 1);
             loginFrame.dispose();
             if (intLevel == 1) {
-                Login.logSession();
+                Login.logSessionLogin();
                 new MainFrame();
             }
             if (intLevel == 2) {
-                Login.logSession();
+                Login.logSessionLogin();
                 new SecondaryFrame();
             }
         } else {

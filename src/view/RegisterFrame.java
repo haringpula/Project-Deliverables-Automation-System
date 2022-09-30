@@ -158,6 +158,8 @@ public class RegisterFrame extends JFrame implements ActionListener {
                 if (Register.register(strUsername, chrPassword, intLevel)) {
                     JOptionPane.showMessageDialog(null, "User created succesfully!", "PDAS", 1, null);
                     registerFrame.dispose();
+                    // TODO:
+                    Register.logSessionRegister();
                     new LoginFrame();
                 } else {
                     JOptionPane.showMessageDialog(null, "User Creation Failed", "PDAS", 0, null);
@@ -173,6 +175,8 @@ public class RegisterFrame extends JFrame implements ActionListener {
                 if (Register.register(strUsername, chrPassword, intLevel)) {
                     JOptionPane.showMessageDialog(null, "User created succesfully!", "PDAS", 1, null);
                     registerFrame.dispose();
+                    // TODO: 
+                    Register.logSessionRegister();
                     new LoginFrame();
                 } else {
                     JOptionPane.showMessageDialog(null, "User Creation Failed", "PDAS", 0, null);
