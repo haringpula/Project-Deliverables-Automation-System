@@ -7,12 +7,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
+// TODO: MainFrame activities
 public class MainFrame extends JFrame implements ActionListener {
     // Initialize content here
-    private JFrame secondaryFrame;
-    private CardLayout secondaryLayout;
-    private JPanel secondaryPanel;
+    private JFrame mainFrame;
+    private CardLayout mainLayout;
+    private JPanel mainPanel;
 
     public MainFrame() {
         initializeMain();
@@ -25,26 +25,25 @@ public class MainFrame extends JFrame implements ActionListener {
     public void initializeMain() {
 
         { // Initialize component contents
-            secondaryFrame = new JFrame("PDAS");
-            secondaryLayout = new CardLayout();
-            secondaryPanel = new JPanel();
+            mainFrame = new JFrame("PDAS");
+            mainLayout = new CardLayout();
+            mainPanel = new JPanel();
 
-        }
-
-        { // Setting up to the frame and panel
-            secondaryFrame.setLayout(secondaryLayout);
-
-            secondaryFrame.add(secondaryPanel);
-            secondaryFrame.setSize(650, 900);
-            secondaryFrame.setLocationRelativeTo(null);
-            secondaryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            secondaryFrame.setVisible(true);
         }
 
         { // Initialize functionalities and layouts
 
         }
 
+        { // Setting up to the frame and panel
+            mainFrame.setLayout(mainLayout);
+
+            mainFrame.add(mainPanel);
+            mainFrame.setSize(900, 500);
+            mainFrame.setLocationRelativeTo(null);
+            mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            mainFrame.setVisible(true);
+        }
     }
 
     /**

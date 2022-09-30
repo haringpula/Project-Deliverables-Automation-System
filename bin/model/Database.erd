@@ -4,7 +4,7 @@
  */
 erdiagram PDAS
 
-notation=crowsfoot
+notation=default
 generate=off
 
 entity Actions {

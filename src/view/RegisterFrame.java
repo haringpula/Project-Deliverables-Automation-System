@@ -66,6 +66,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
         }
 
         { // Initialize functionalities and layouts
+            registerPanel.setBorder(BorderFactory.createEmptyBorder(0, 4, 4, 4));
             lblUsername.setLabelFor(fldUsername);
             lblPassword.setLabelFor(fldPassword);
             lblPassword2.setLabelFor(fldPassword2);
@@ -103,7 +104,8 @@ public class RegisterFrame extends JFrame implements ActionListener {
                 @Override
                 public void mouseExited(MouseEvent e) {
                     // the mouse has exited the label
-                    lblLogin.setForeground(Color.WHITE);                }
+                    lblLogin.setForeground(Color.WHITE);
+                }
             });
         }
 
@@ -158,7 +160,6 @@ public class RegisterFrame extends JFrame implements ActionListener {
                 if (Register.register(strUsername, chrPassword, intLevel)) {
                     JOptionPane.showMessageDialog(null, "User created succesfully!", "PDAS", 1, null);
                     registerFrame.dispose();
-                    // TODO:
                     Register.logSessionRegister();
                     new LoginFrame();
                 } else {
@@ -175,7 +176,6 @@ public class RegisterFrame extends JFrame implements ActionListener {
                 if (Register.register(strUsername, chrPassword, intLevel)) {
                     JOptionPane.showMessageDialog(null, "User created succesfully!", "PDAS", 1, null);
                     registerFrame.dispose();
-                    // TODO: 
                     Register.logSessionRegister();
                     new LoginFrame();
                 } else {

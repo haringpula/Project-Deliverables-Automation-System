@@ -7,11 +7,13 @@ package view;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.*;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -69,6 +71,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         }
 
         { // Initialize functionalities and layouts
+            loginPanel.setBorder(BorderFactory.createEmptyBorder(0, 4, 4, 4));
             lblUsername.setLabelFor(fldUsername);
             lblPassword.setLabelFor(fldPassword);
             lblLevel.setLabelFor(cbxLevel);

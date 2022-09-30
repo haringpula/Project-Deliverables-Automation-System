@@ -43,7 +43,6 @@ public class Register extends DatabaseConnection {
 
             intResult = sqlStatement.executeUpdate();
 
-            // BUG: Session is changed to record, update like Login class
             if (intResult > 0) {
                 query = "SELECT `user_id` FROM `users` WHERE `user_name` =?";
                 try {
