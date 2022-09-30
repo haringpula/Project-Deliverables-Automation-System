@@ -12,7 +12,8 @@
         "exclude": [
             "lib/mysql-connector.jar",
             "lib/junit-jupiter-5.9.0.jar",
-            "test-lib/junit-platform-console-standalone-1.9.0.jar"
+            "test-lib/junit-platform-console-standalone-1.9.0.jar",
+            "lib/New folder/JTattoo-1.6.13.jar"
         ]
     },
     "cSpell.words": [

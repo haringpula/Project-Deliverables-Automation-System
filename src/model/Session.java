@@ -4,15 +4,39 @@
  */
 package model;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import controller.DatabaseConnection;
 
 public record Session(
         int intAction,
-        int intUsername,
-        int intLevel0,
+        int intUser,
         String sqlDate,
-        String strDetail) {
-    public static void logSession() {
-        // TODO: Log session, only take a few things and do sql statement here with the now()
+        String strDetail,
+        String strName) {
+    public void logSession() {
+        // Test
+        PreparedStatement sqlStatement;
+        int intResult;
+
+        String query = "INSERT INTO `sessions`(`user_id`, `action_id`, `session_date`, `session_detail`) VALUES (?,?,"+sqlDate+",?)";
+        try {
+            sqlStatement = DatabaseConnection.connectToDatabase().prepareStatement(query);
+
+            sqlStatement.setInt(1, intUser);
+            sqlStatement.setInt(2, intAction);
+            //sqlStatement.setString(3, sqlDate);
+            sqlStatement.setString(3, strDetail);
+
+            intResult = sqlStatement.executeUpdate();
+
+            if (intResult > 0) {
+                //;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }

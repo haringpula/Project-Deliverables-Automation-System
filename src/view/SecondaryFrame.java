@@ -7,14 +7,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
-public class MainFrame extends JFrame implements ActionListener {
+public class SecondaryFrame extends JFrame implements ActionListener {
     // Initialize content here
     private JFrame secondaryFrame;
     private CardLayout secondaryLayout;
     private JPanel secondaryPanel;
 
-    public MainFrame() {
+    public SecondaryFrame() {
         initializeMain();
 
     }
@@ -35,7 +34,7 @@ public class MainFrame extends JFrame implements ActionListener {
             secondaryFrame.setLayout(secondaryLayout);
 
             secondaryFrame.add(secondaryPanel);
-            secondaryFrame.setSize(650, 900);
+            secondaryFrame.setSize(700, 500);
             secondaryFrame.setLocationRelativeTo(null);
             secondaryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             secondaryFrame.setVisible(true);

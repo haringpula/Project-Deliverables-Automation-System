@@ -11,10 +11,17 @@ import java.sql.SQLException;
 import model.Session;
 
 public class Login extends DatabaseConnection {
+    private static Session session;
+    private static int intAction = 1;
+    private static int intUser;
+    private static String sqlDate = "NOW()";
+    private static String strDetail = "User ";
+    private static String strName = "";
+    private static String strLevel;
 
     /**
      * @param strUsername
-     * @param strPassword
+     * @param chrPassword
      * @param intLevel
      * @return
      */
@@ -22,7 +29,6 @@ public class Login extends DatabaseConnection {
         PreparedStatement sqlStatement;
         ResultSet sqlResult;
         String strPassword = encryptPassword(chrPassword);
-        System.out.println(strPassword);
 
         String query = "SELECT * FROM `users` WHERE `user_name` =? AND `user_password` =? AND `user_level` =?";
 
@@ -35,9 +41,9 @@ public class Login extends DatabaseConnection {
             sqlResult = sqlStatement.executeQuery();
 
             while (sqlResult.next()) {
-                // BUG: Session is changed to record
-                //Session.strUsername = sqlResult.getString("user_name");
-                //Session.intLevel = sqlResult.getInt("user_level");
+                intUser = sqlResult.getInt("user_id");
+                strName = sqlResult.getString("user_name");
+                strLevel = String.valueOf(intLevel);
                 return true;
             }
         } catch (SQLException ex) {
@@ -47,7 +53,13 @@ public class Login extends DatabaseConnection {
 
     }
 
-
-    
+    public static void logSessionLogin() {
+        strDetail += strName;
+        strDetail += " level (";
+        strDetail += strLevel;
+        strDetail += ") has logged in!";
+        session = new Session(intAction, intUser, sqlDate, strDetail, strName);
+        session.logSession();
+    }
 
 }

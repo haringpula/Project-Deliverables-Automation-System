@@ -6,14 +6,19 @@ package controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
 
 import model.Secrets;
+import model.Session;
 
 public class DatabaseConnection {
+    private static Session session;
+    private static int intAction;
+    private static int intUser;
+    private static String sqlDate = "NOW()";
+    private static String strDetail = "User ";
+    private static String strName = "";
     private static Connection connection = null;
     private static Secrets secrets = new Secrets();
-    private Statement statement = null;
 
     /**
      * @return Connection
@@ -29,7 +34,7 @@ public class DatabaseConnection {
         }
         return connection;
     }
-    
+
     /**
      * @param chrPassword
      * @return
@@ -37,12 +42,20 @@ public class DatabaseConnection {
     public static String encryptPassword(char[] chrPassword) {
         return Secrets.encryption(String.valueOf(chrPassword));
     }
+
     
-    /**
-     * @return
+    /** 
+     * @param strInputHash
+     * @return boolean
      */
-    public static String getFileHash() {
-        return secrets.getFileHash();
+    public static boolean csvHashVerifier(String strInputHash) {
+        int intInputHash = strInputHash.hashCode();
+        String strHash = secrets.getHash();
+        int intHash = strHash.hashCode();
+        if (intInputHash != intHash) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -54,5 +67,10 @@ public class DatabaseConnection {
             chrPassword[i] = '0';
         }
         return chrPassword;
+    }
+
+    public static Session passSession() {
+        session = new Session(intAction, intUser, sqlDate, strDetail,strName);
+        return session;
     }
 }
