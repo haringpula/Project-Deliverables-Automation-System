@@ -20,6 +20,19 @@ public class MainController extends DatabaseConnection {
     private static String strName = "";
     private static String strLevel;
 
+    // TODO: functions for deliverables
+    // creating deliverables, 
+    // editing deliverable status, 
+    // editing deliverable name or detail
+    // editing deliverable category
+    // deleting deliverable
+
+    // FUNCTIONS HERE WILL GET SHIT FROM VIEW, THEN EXECUTE FROM DELIVERABLE RECORD
+    // ANDUN YNUG SQL SHIT WAG KA MALITO
+
+
+    //INSERT INTO deliverables(category_id, deliverable_name, deliverable_start, status_id) VALUES (1,"Finish REAME",CURDATE(), 2);
+
     
     
 }
