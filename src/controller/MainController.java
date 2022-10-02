@@ -10,6 +10,8 @@ import model.Session;
 
 public class MainController extends DatabaseConnection {
     // TODO: will contain functions shared between both frames,
+    // fetch table
+    // also contain functions only for the main veiw frame.. like selectable table... implementation might vary on the view
     private static Session session;
     private static int intAction = 1;
     private static int intUser;
