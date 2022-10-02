@@ -72,7 +72,7 @@ public class DatabaseConnection {
      * @return Session
      */
     public static Session passSession() {
-        session = new Session(intAction, intUser, sqlDate, strDetail, strName);
+        session = new Session(intAction, intUser, strDetail, strName);
         return session;
     }
 }

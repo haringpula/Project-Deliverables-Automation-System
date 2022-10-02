@@ -9,6 +9,7 @@ import javax.swing.*;
 import javax.swing.JPanel;
 
 import controller.MainController;
+import model.Deliverable;
 
 public class SecondaryFrame extends JFrame implements ActionListener {
     // Initialize content here
@@ -40,7 +41,7 @@ public class SecondaryFrame extends JFrame implements ActionListener {
         
 
         { // Initialize functionalities and layouts
-            dataTable.setModel(MainController.fetchTableData());
+            dataTable.setModel(Deliverable.fetchTableData());
         }
 
         { // Setting up to the frame and panel

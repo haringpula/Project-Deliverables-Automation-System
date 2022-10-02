@@ -14,7 +14,6 @@ import model.Session;
 public class Register extends DatabaseConnection {
     private static Session session;
     private static int intUser;
-    private static String sqlDate = "NOW()";
     private static String strDetail = "User (id ";
     private static String strName = "";
     private static String strLevel;
@@ -76,7 +75,7 @@ public class Register extends DatabaseConnection {
         strDetail += " has been registered with level (";
         strDetail += strLevel;
         strDetail += ")!";
-        session = new Session(Actions.REGISTER.id, intUser, sqlDate, strDetail, strName);
+        session = new Session(Actions.REGISTER.id, intUser, strDetail, strName);
         session.logSession();
 
     }

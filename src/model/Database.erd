@@ -22,6 +22,8 @@ entity Deliverables {
    category_id: int key
    deliverable_name: varchar(45)
    deliverable_detail: varchar(255)
+   deliverable_start: date
+   deliverable_end: date
    status_id: int key
 }
 
