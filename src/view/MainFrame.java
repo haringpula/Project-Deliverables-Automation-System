@@ -3,11 +3,15 @@ package view;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Properties;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+
+import com.github.lgooddatepicker.components.DatePicker;
 
 import model.Session;
 
@@ -18,6 +22,8 @@ public class MainFrame extends JFrame implements ActionListener {
     private CardLayout mainLayout;
     private JPanel mainPanel;
     private JTable sessionTable;
+    private JLabel lblStart;
+    private DatePicker dtStart;
 
     public MainFrame() {
         initializeMain();
@@ -34,16 +40,24 @@ public class MainFrame extends JFrame implements ActionListener {
             mainLayout = new CardLayout();
             mainPanel = new JPanel();
             sessionTable = new JTable();
+            lblStart = new JLabel("");
+            dtStart = new DatePicker();
+            
 
         }
 
         { // Initialize functionalities and layouts
             sessionTable.setModel(Session.fetchSessionData());
+            dtStart.setDateToToday();
+            dtStart.setEnabled(true);
+            lblStart.setText(dtStart.getDate().toString());
         }
 
         { // Setting up to the frame and panel
             mainFrame.setLayout(mainLayout);
             mainPanel.add(sessionTable);
+            mainPanel.add(lblStart);
+            mainPanel.add(dtStart);
 
             mainFrame.add(mainPanel);
             mainFrame.setSize(900, 500);
@@ -65,3 +79,4 @@ public class MainFrame extends JFrame implements ActionListener {
     }
 
 }
+

@@ -73,7 +73,17 @@ public class LoginFrame extends JFrame implements ActionListener {
         { // Initialize functionalities and layouts
             loginPanel.setBorder(BorderFactory.createEmptyBorder(0, 4, 4, 4));
             lblUsername.setLabelFor(fldUsername);
+            fldUsername.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evtEnter) {
+                    actUsernameEnter(evtEnter);
+                }
+            });
             lblPassword.setLabelFor(fldPassword);
+            fldPassword.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evtEnter) {
+                    actPasswordEnter(evtEnter);
+                }
+            });
             lblLevel.setLabelFor(cbxLevel);
             cbxLevel.addItem(1);
             cbxLevel.addItem(2);
@@ -134,6 +144,14 @@ public class LoginFrame extends JFrame implements ActionListener {
 
     }
 
+    protected void actPasswordEnter(ActionEvent evtEnter) {
+        btnLogin.doClick();
+    }
+
+    protected void actUsernameEnter(ActionEvent evtEnter) {
+        fldPassword.requestFocus();
+    }
+
     /**
      * @param evtLogin
      */
@@ -169,7 +187,7 @@ public class LoginFrame extends JFrame implements ActionListener {
     /**
      * @param evtClear
      */
-    private void actClear(ActionEvent evtClear) {
+    protected void actClear(ActionEvent evtClear) {
         fldUsername.setText("");
         fldPassword.setText("");
         cbxLevel.setSelectedIndex(0);

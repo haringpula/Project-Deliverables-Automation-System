@@ -68,8 +68,23 @@ public class RegisterFrame extends JFrame implements ActionListener {
         { // Initialize functionalities and layouts
             registerPanel.setBorder(BorderFactory.createEmptyBorder(0, 4, 4, 4));
             lblUsername.setLabelFor(fldUsername);
+            fldUsername.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evtEnter) {
+                    actUsernameEnter(evtEnter);
+                }
+            });
             lblPassword.setLabelFor(fldPassword);
+            fldPassword.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evtEnter) {
+                    actPasswordEnter(evtEnter);
+                }
+            });
             lblPassword2.setLabelFor(fldPassword2);
+            fldPassword2.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evtEnter) {
+                    actPasswordEnter2(evtEnter);
+                }
+            });
             lblLevel.setLabelFor(cbxLevel);
             cbxLevel.addItem(1);
             cbxLevel.addItem(2);
@@ -131,6 +146,19 @@ public class RegisterFrame extends JFrame implements ActionListener {
             registerFrame.setVisible(true);
         }
 
+    }
+
+
+    protected void actPasswordEnter2(ActionEvent evtEnter) {
+        btnRegister.doClick();
+    }
+
+    protected void actPasswordEnter(ActionEvent evtEnter) {
+        fldPassword2.requestFocus();
+    }
+
+    protected void actUsernameEnter(ActionEvent evtEnter) {
+        fldPassword.requestFocus();
     }
 
     /**

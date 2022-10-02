@@ -17,7 +17,8 @@ public class SecondaryFrame extends JFrame implements ActionListener {
     private CardLayout secondaryLayout;
     private JPanel secondaryPanel;
     private JScrollPane secondaryPane;
-    private JTable dataTable;
+    private JTable deliverableTable;
+    
     // TODO: secondaryPanel does not layout table model properly
 
     public SecondaryFrame() {
@@ -35,19 +36,19 @@ public class SecondaryFrame extends JFrame implements ActionListener {
             secondaryLayout = new CardLayout();
             secondaryPanel = new JPanel();
             secondaryPane = new JScrollPane();
-            dataTable = new JTable();
+            deliverableTable = new JTable();
         }
 
         
 
         { // Initialize functionalities and layouts
-            dataTable.setModel(Deliverable.fetchTableData());
+            deliverableTable.setModel(Deliverable.fetchTableData());
         }
 
         { // Setting up to the frame and panel
             secondaryFrame.setLayout(secondaryLayout);
             secondaryFrame.add(secondaryPanel);
-            secondaryPanel.add(dataTable);
+            secondaryPanel.add(deliverableTable);
 
             secondaryFrame.add(secondaryPanel);
             secondaryFrame.setSize(700, 500);
