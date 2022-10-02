@@ -45,7 +45,7 @@ public class StartFrame extends Frame implements ActionListener {
         try {
 			UIManager.setLookAndFeel(new com.jtattoo.plaf.hifi.HiFiLookAndFeel());
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
         setSize(300, 200);
         setLayout(new BorderLayout());

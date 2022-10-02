@@ -43,8 +43,7 @@ public class DatabaseConnection {
         return Secrets.encryption(String.valueOf(chrPassword));
     }
 
-    
-    /** 
+    /**
      * @param strInputHash
      * @return boolean
      */
@@ -69,8 +68,11 @@ public class DatabaseConnection {
         return chrPassword;
     }
 
+    /**
+     * @return Session
+     */
     public static Session passSession() {
-        session = new Session(intAction, intUser, sqlDate, strDetail,strName);
+        session = new Session(intAction, intUser, strDetail, strName);
         return session;
     }
 }

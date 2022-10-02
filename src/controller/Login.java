@@ -8,13 +8,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import model.Actions;
 import model.Session;
 
 public class Login extends DatabaseConnection {
     private static Session session;
-    private static int intAction = 1;
     private static int intUser;
-    private static String sqlDate = "NOW()";
     private static String strDetail = "User ";
     private static String strName = "";
     private static String strLevel;
@@ -58,7 +57,7 @@ public class Login extends DatabaseConnection {
         strDetail += " level (";
         strDetail += strLevel;
         strDetail += ") has logged in!";
-        session = new Session(intAction, intUser, sqlDate, strDetail, strName);
+        session = new Session(Actions.LOGIN.id, intUser, strDetail, strName);
         session.logSession();
     }
 
