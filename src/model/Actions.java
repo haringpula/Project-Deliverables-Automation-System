@@ -12,7 +12,7 @@ public enum Actions {
     /**
      * @param id
      */
-    Actions (int id){
+    Actions(int id) {
         this.id = id;
     }
 }

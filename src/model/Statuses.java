@@ -14,7 +14,7 @@ public enum Statuses {
     /**
      * @param id
      */
-    Statuses (int id){
+    Statuses(int id) {
         this.id = id;
     }
 }

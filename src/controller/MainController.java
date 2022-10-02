@@ -22,6 +22,10 @@ public class MainController extends DatabaseConnection {
     private static String[] columnNames = { "ID", "Category", "Deliverable", "Details", "Status" };
     private static DefaultTableModel model = new DefaultTableModel();
 
+    
+    /** 
+     * @return DefaultTableModel
+     */
     public static DefaultTableModel fetchTableData() {
         model.setColumnIdentifiers(columnNames);
         PreparedStatement sqlStatement;
