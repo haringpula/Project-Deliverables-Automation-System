@@ -25,7 +25,7 @@ public class DatabaseConnection {
      */
     public static Connection connectToDatabase() {
         try {
-            Secrets.getCredentials();
+            secrets.getCredentials();
             connection = DriverManager.getConnection(
                     secrets.getURLString(), secrets.getUsernameString(), secrets.getPasswordString());
         } catch (Exception e) {

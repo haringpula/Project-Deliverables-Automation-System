@@ -13,7 +13,7 @@ public class DeliverableOperations extends DatabaseConnection {
      * @param deliverable
      * @return boolean
      */
-    public static boolean createDeliverable(Deliverable deliverable) {
+    public boolean createDeliverable(Deliverable deliverable) {
         PreparedStatement sqlStatement;
         int intResult;
 
@@ -47,7 +47,7 @@ public class DeliverableOperations extends DatabaseConnection {
      * @param intId
      * @return boolean
      */
-    public static boolean updateDeliverable(Deliverable deliverable, int intId) {
+    public boolean updateDeliverable(Deliverable deliverable, int intId) {
         PreparedStatement sqlStatement;
         int intResult;
 
@@ -80,7 +80,7 @@ public class DeliverableOperations extends DatabaseConnection {
      * @param intId
      * @return boolean
      */
-    public static boolean deleteDeliverable(int intId) {
+    public boolean deleteDeliverable(int intId) {
         PreparedStatement sqlStatement;
         int intResult;
 
@@ -108,7 +108,7 @@ public class DeliverableOperations extends DatabaseConnection {
      * @param strName
      * @return int
      */
-    public static int findDeliverableId(String strName) {
+    public int findDeliverableId(String strName) {
         int intId;
         PreparedStatement sqlStatement;
         ResultSet sqlResult;
