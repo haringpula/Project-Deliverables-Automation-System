@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import controller.Login;
 import controller.Register;
 
 public class RegisterFrame extends JFrame implements ActionListener {
@@ -106,7 +107,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
                 public void mouseClicked(MouseEvent e) {
                     // the user clicks on the label
                     registerFrame.dispose();
-                    new LoginFrame();
+                    Login.startLoginFrame();
 
                 }
 

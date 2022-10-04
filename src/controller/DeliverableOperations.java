@@ -6,14 +6,13 @@ import java.sql.SQLException;
 
 import model.Deliverable;
 
-// TODO: JUnit these shit
 public class DeliverableOperations extends DatabaseConnection {
 
     /**
      * @param deliverable
      * @return boolean
      */
-    public boolean createDeliverable(Deliverable deliverable) {
+    public boolean createOperation(Deliverable deliverable) {
         PreparedStatement sqlStatement;
         int intResult;
 
@@ -47,7 +46,7 @@ public class DeliverableOperations extends DatabaseConnection {
      * @param intId
      * @return boolean
      */
-    public boolean updateDeliverable(Deliverable deliverable, int intId) {
+    public boolean updateOperation(Deliverable deliverable, int intId) {
         PreparedStatement sqlStatement;
         int intResult;
 
@@ -80,7 +79,7 @@ public class DeliverableOperations extends DatabaseConnection {
      * @param intId
      * @return boolean
      */
-    public boolean deleteDeliverable(int intId) {
+    public boolean deleteOperation(int intId) {
         PreparedStatement sqlStatement;
         int intResult;
 
@@ -102,35 +101,6 @@ public class DeliverableOperations extends DatabaseConnection {
         }
         return false;
 
-    }
-
-    /**
-     * @param strName
-     * @return int
-     */
-    public int findDeliverableId(String strName) {
-        int intId;
-        PreparedStatement sqlStatement;
-        ResultSet sqlResult;
-
-        String query = "SELECT * FROM `deliverables` WHERE `deliverable_name` =?";
-
-        try {
-            sqlStatement = connectToDatabase().prepareStatement(query);
-
-            sqlStatement.setString(1, strName);
-
-            sqlResult = sqlStatement.executeQuery();
-
-            while (sqlResult.next()) {
-                intId = sqlResult.getInt("deliverable_id");
-                return intId;
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        // idk what to return if this method fails
-        return -1;
     }
 
 }

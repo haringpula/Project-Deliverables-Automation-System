@@ -3,13 +3,15 @@ package view;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Properties;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 import javax.swing.JTable;
+import javax.swing.JTextPane;
 
 import com.github.lgooddatepicker.components.DatePicker;
 
@@ -20,12 +22,13 @@ public class MainFrame extends JFrame implements ActionListener {
     // Initialize content here
     private JFrame mainFrame;
     private CardLayout mainLayout;
-    private JPanel mainPanel;
+    private JSplitPane splitTableButtons;
+    private JPanel tablePanel;
+    private JScrollPane tablePane;
+    private JPanel buttoPanel;
     private JTable sessionTable;
     private JLabel lblStart;
-    /**
-     *
-     */
+    
     private DatePicker dtStart;
 
     public MainFrame() {
@@ -41,7 +44,10 @@ public class MainFrame extends JFrame implements ActionListener {
         { // Initialize component contents
             mainFrame = new JFrame("PDAS");
             mainLayout = new CardLayout();
-            mainPanel = new JPanel();
+            splitTableButtons = new JSplitPane(1);
+            tablePanel =  new JPanel();
+            tablePane = new JScrollPane();
+            buttoPanel = new JPanel();
             sessionTable = new JTable();
             lblStart = new JLabel("");
             dtStart = new DatePicker();
@@ -50,6 +56,7 @@ public class MainFrame extends JFrame implements ActionListener {
         }
 
         { // Initialize functionalities and layouts
+            
             sessionTable.setModel(Session.fetchSessionData());
             dtStart.setDateToToday();
             dtStart.setEnabled(true);
@@ -58,11 +65,15 @@ public class MainFrame extends JFrame implements ActionListener {
 
         { // Setting up to the frame and panel
             mainFrame.setLayout(mainLayout);
-            mainPanel.add(sessionTable);
-            mainPanel.add(lblStart);
-            mainPanel.add(dtStart);
 
-            mainFrame.add(mainPanel);
+            splitTableButtons.add(tablePanel);
+            splitTableButtons.add(buttoPanel);
+            tablePanel.add(tablePane);
+            tablePane.add(sessionTable);
+            buttoPanel.add(lblStart);
+            buttoPanel.add(dtStart);
+
+            mainFrame.add(splitTableButtons);
             mainFrame.setSize(900, 500);
             mainFrame.setLocationRelativeTo(null);
             mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

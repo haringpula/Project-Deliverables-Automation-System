@@ -12,6 +12,7 @@
  * ~~~~~~~~~~███████████REMOVE IN FINAL VERSION ██ SAPERE AUDE███████████~~~~~~~~~~
  */
 
+import controller.Login;
 import view.LoginFrame;
 import view.StartFrame;
 
@@ -25,7 +26,7 @@ public class Start {
      */
     public static void main(String[] args) {
         new StartFrame();
-        new LoginFrame();
+        Login.startLoginFrame();
     }
 
 }

@@ -24,7 +24,7 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<!-- TODO: PROJECT LOGO -->
+<!-- TODO: Project logo and screenshots -->
 <br />
 <div align="center">
   <a href="https://github.com/haringpula/Project-Deliverables-Automation-System">
@@ -79,15 +79,16 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Blank template, do next time.
+TODO: This project is pretty much work and progress, will be updating this soon after some progress.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
 - Java
-- JUnit
 - MySQL
+- JTattoo
+- JUnit
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -95,38 +96,24 @@ Blank template, do next time.
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+The software is made and developed on Visual Studio Code. It is recommended that the
+repository is cloned in VSCode.
 
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
 
-- npm
-
-  ```sh
-  npm install npm@latest -g
-  ```
+- [Java 19](https://www.oracle.com/java/technologies/downloads/)
+- [JTattoo](http://www.jtattoo.net/Download.html)
+- [MySQL](https://dev.mysql.com/downloads/windows/installer/8.0.html)
+  - [MySQL JConnector](https://dev.mysql.com/downloads/connector/j/)
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
 
    ```sh
    git clone https://github.com/haringpula/Project-Deliverables-Automation-System.git
-   ```
-
-3. Install NPM packages
-
-   ```sh
-   npm install
-   ```
-
-4. Enter your API in `config.js`
-
-   ```js
-   const API_KEY = "ENTER YOUR API";
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -135,7 +122,7 @@ This is an example of how to list things you need to use the software and how to
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+TODO: Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
@@ -144,6 +131,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 
 ## Roadmap
+
+TODO: Roadmap
 
 - [ ] Feature 1
 - [ ] Feature 2
@@ -193,9 +182,7 @@ Project Link: [https://github.com/haringpula/Project-Deliverables-Automation-Sys
 
 ## Acknowledgments
 
-- []()
-- []()
-- []()
+- [idk](README.md)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

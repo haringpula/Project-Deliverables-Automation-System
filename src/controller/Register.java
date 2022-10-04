@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 import model.Actions;
 import model.Session;
+import view.RegisterFrame;
 
 public class Register extends DatabaseConnection {
     private static Session session;
@@ -125,6 +126,10 @@ public class Register extends DatabaseConnection {
             strError += "Must contain a special character\n";
         }
         return strError;
+    }
+
+    public static void startRegisterFrame() {
+        new RegisterFrame();
     }
 
 }
