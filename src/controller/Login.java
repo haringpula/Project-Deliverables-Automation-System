@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 import model.Actions;
 import model.Session;
+import view.LoginFrame;
 
 public class Login extends DatabaseConnection {
     private static Session session;
@@ -61,4 +62,12 @@ public class Login extends DatabaseConnection {
         session.logSession();
     }
 
+    public static int getID() {
+        return intUser;
+        
+    }
+
+    public static void startLoginFrame() {
+        new LoginFrame();
+    }
 }
