@@ -23,6 +23,9 @@ public class MainFrame extends JFrame implements ActionListener {
     private JPanel mainPanel;
     private JTable sessionTable;
     private JLabel lblStart;
+    /**
+     *
+     */
     private DatePicker dtStart;
 
     public MainFrame() {

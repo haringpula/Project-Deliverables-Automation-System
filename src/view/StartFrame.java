@@ -26,6 +26,7 @@ import model.Secrets;
 
 // XXX: this shit is from oracle documentation, i dont understand this
 public class StartFrame extends Frame implements ActionListener {
+    private Secrets secrets = new Secrets();
 
     /**
      * @param g
@@ -59,8 +60,8 @@ public class StartFrame extends Frame implements ActionListener {
         setMenuBar(mb);
         mb.add(m1);
         // NOTE: Initialize gif file as splash image
-        Secrets.getCredentials();
-        if (!Secrets.csvHashVerifier()) {
+        secrets.getCredentials();
+        if (!secrets.csvHashVerifier()) {
             JOptionPane.showMessageDialog(null, "Database File Hash Code error. Please verify your DB_CREDENTIALS.csv file", "Integrity Check Failed", 0);
             System.exit(2);
         }

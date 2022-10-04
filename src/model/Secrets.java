@@ -22,7 +22,7 @@ public class Secrets {
     /**
      * 
      */
-    public static void getCredentials() {
+    public void getCredentials() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("src/model/DB_CREDENTIALS.csv"));
             String line = reader.readLine();
@@ -59,7 +59,7 @@ public class Secrets {
     /**
      * @return boolean
      */
-    public static boolean csvHashVerifier() {
+    public boolean csvHashVerifier() {
         int intFileHash = strFileHash.hashCode();
         int intHash = HASH_CODE.hashCode();
         if (intFileHash != intHash) {
