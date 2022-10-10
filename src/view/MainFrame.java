@@ -32,6 +32,7 @@ public class MainFrame extends JFrame implements ActionListener {
     private DatePicker dtStart;
 
     public MainFrame() {
+        
         initializeMain();
 
     }

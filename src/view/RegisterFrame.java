@@ -150,14 +150,26 @@ public class RegisterFrame extends JFrame implements ActionListener {
     }
 
 
+    
+    /** 
+     * @param evtEnter
+     */
     protected void actPasswordEnter2(ActionEvent evtEnter) {
         btnRegister.doClick();
     }
 
+    
+    /** 
+     * @param evtEnter
+     */
     protected void actPasswordEnter(ActionEvent evtEnter) {
         fldPassword2.requestFocus();
     }
 
+    
+    /** 
+     * @param evtEnter
+     */
     protected void actUsernameEnter(ActionEvent evtEnter) {
         fldPassword.requestFocus();
     }
@@ -190,7 +202,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(null, "User created succesfully!", "PDAS", 1, null);
                     registerFrame.dispose();
                     Register.logSessionRegister();
-                    new LoginFrame();
+                    Login.startLoginFrame();
                 } else {
                     JOptionPane.showMessageDialog(null, "User Creation Failed", "PDAS", 0, null);
                 }
@@ -206,7 +218,7 @@ public class RegisterFrame extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(null, "User created succesfully!", "PDAS", 1, null);
                     registerFrame.dispose();
                     Register.logSessionRegister();
-                    new LoginFrame();
+                    Login.startLoginFrame();
                 } else {
                     JOptionPane.showMessageDialog(null, "User Creation Failed", "PDAS", 0, null);
                 }

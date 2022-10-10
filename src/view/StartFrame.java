@@ -44,7 +44,7 @@ public class StartFrame extends Frame implements ActionListener {
     public StartFrame() {
         super("SplashScreen demo");
         try {
-			UIManager.setLookAndFeel(new com.jtattoo.plaf.hifi.HiFiLookAndFeel());
+			//UIManager.setLookAndFeel(new com.jtattoo.plaf.hifi.HiFiLookAndFeel());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 import controller.MainController;
 import model.Deliverable;
@@ -35,20 +36,25 @@ public class SecondaryFrame extends JFrame implements ActionListener {
             secondaryFrame = new JFrame("PDAS");
             secondaryLayout = new CardLayout();
             secondaryPanel = new JPanel();
-            secondaryPane = new JScrollPane();
+            secondaryPane = new JScrollPane(deliverableTable);
             deliverableTable = new JTable();
+
+            
         }
 
         
 
         { // Initialize functionalities and layouts
             deliverableTable.setModel(Deliverable.fetchTableData());
+            secondaryPane.setBounds(10, 304, 461, 189); 
         }
 
         { // Setting up to the frame and panel
             secondaryFrame.setLayout(secondaryLayout);
+            //secondaryFrame.getContentPane().add(secondaryPane);
             secondaryFrame.add(secondaryPanel);
-            secondaryPanel.add(deliverableTable);
+            //secondaryPanel.add(secondaryPane);
+            //secondaryPane.add(deliverableTable);
 
             secondaryFrame.add(secondaryPanel);
             secondaryFrame.setSize(700, 500);

@@ -10,14 +10,23 @@ import javax.swing.table.DefaultTableModel;
 import model.Actions;
 import model.Deliverable;
 import model.Session;
+import view.MainFrame;
+import view.SecondaryFrame;
 
 public class MainController extends DeliverableOperations {
     private Session session;
-    // TODO: this class should be able to get the int user called from the other class.. idk how
-    private int intId = Login.getID();
+    private static int intUser;
 
     
-    
+    /** 
+     * @param intCategory
+     * @param strName
+     * @param strDetail
+     * @param strStart
+     * @param strEnd
+     * @param intStatus
+     * @return boolean
+     */
     // TODO: will contain functions shared between both frames,
     // fetch table
     // also contain functions only for the main veiw frame.. like selectable
@@ -27,26 +36,29 @@ public class MainController extends DeliverableOperations {
     // generate deliverable shits here
     // Deliverable deliverable = new Deliverable(0, null, null, null, null, 0);
 
-    public boolean createDeliverable(int intCategory, String strName, String strDetail, String strStart, String strEnd, int intStatus) {
+    public boolean createDeliverable(int intCategory, String strName, String strDetail, String strStart, String strEnd,
+            int intStatus) {
         String strSessionDetail = "";
         Date dtStart = strToDate(strStart);
         Date dtEnd = strToDate(strEnd);
         Deliverable deliverable = new Deliverable(intStatus, strDetail, strDetail, dtStart, dtEnd, intStatus);
         if (createOperation(deliverable)) {
             // TODO: PASS USER FROM LOGIN
-            //session = new Session(Actions.CREATE.id(), , , );
+            // session = new Session(Actions.CREATE.id(), , , );
             session.logSession();
             return true;
         }
         return false;
     }
 
-
-
+    
+    /** 
+     * @param strDate
+     * @return Date
+     */
     private Date strToDate(String strDate) {
         return Date.valueOf(strDate);
     }
-
 
     /**
      * @param strName
@@ -76,4 +88,17 @@ public class MainController extends DeliverableOperations {
         // idk what to return if this method fails
         return -1;
     }
+
+    public static void startMainFrame() {
+        intUser = Login.getID();
+        // HACK: display table to console out
+        new MainFrame();
+    }
+
+    public static void startSecondaryFrame() {
+        intUser = Login.getID();
+        // HACK: display table to console out
+        new SecondaryFrame();
+    }
+
 }

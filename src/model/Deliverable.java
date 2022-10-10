@@ -21,8 +21,9 @@ public record Deliverable(
      * @return DefaultTableModel
      */
     public static DefaultTableModel fetchTableData() {
-        String[] columnNames = { "ID", "Category", "Deliverable", "Details", "Status" };
-        final DefaultTableModel model = new DefaultTableModel();
+        String[] columnNames = new String[] { "ID", "Category", "Deliverable", "Details", "Status" };
+        //Object[][] data;
+        final DefaultTableModel model = new DefaultTableModel(null,columnNames);
         model.setColumnIdentifiers(columnNames);
         PreparedStatement sqlStatement;
         ResultSet sqlResult;

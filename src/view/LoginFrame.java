@@ -23,6 +23,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import controller.Login;
+import controller.MainController;
 import controller.Register;
 
 public class LoginFrame extends JFrame implements ActionListener {
@@ -143,10 +144,18 @@ public class LoginFrame extends JFrame implements ActionListener {
 
     }
 
+    
+    /** 
+     * @param evtEnter
+     */
     protected void actPasswordEnter(ActionEvent evtEnter) {
         btnLogin.doClick();
     }
 
+    
+    /** 
+     * @param evtEnter
+     */
     protected void actUsernameEnter(ActionEvent evtEnter) {
         fldPassword.requestFocus();
     }
@@ -171,11 +180,11 @@ public class LoginFrame extends JFrame implements ActionListener {
             loginFrame.dispose();
             if (intLevel == 1) {
                 Login.logSessionLogin();
-                new MainFrame();
+                MainController.startMainFrame();
             }
             if (intLevel == 2) {
                 Login.logSessionLogin();
-                new SecondaryFrame();
+                MainController.startSecondaryFrame();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Login Failed", "PDAS", 0);
