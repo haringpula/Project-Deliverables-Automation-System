@@ -21,9 +21,10 @@ public record Deliverable(
      * @return DefaultTableModel
      */
     public static DefaultTableModel fetchTableData() {
+        // BUG: Fucking nuclear level refactoring required, change to String[][]
         String[] columnNames = new String[] { "ID", "Category", "Deliverable", "Details", "Status" };
-        //Object[][] data;
-        final DefaultTableModel model = new DefaultTableModel(null,columnNames);
+        // Object[][] data;
+        final DefaultTableModel model = new DefaultTableModel(null, columnNames);
         model.setColumnIdentifiers(columnNames);
         PreparedStatement sqlStatement;
         ResultSet sqlResult;
@@ -53,6 +54,12 @@ public record Deliverable(
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 5; j++) {
+                System.out.print(model.getValueAt(i, j) + " | ");
+            }
+            System.out.println();
         }
         return model;
     }

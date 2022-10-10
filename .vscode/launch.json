@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch JTableExamples",
+            "request": "launch",
+            "mainClass": "view.JTableExamples",
+            "projectName": "Project Deliverables Automation System_f539e2a1"
+        },
+        {
+            "type": "java",
             "name": "Launch MinFrame",
             "request": "launch",
             "mainClass": "view.MinFrame",

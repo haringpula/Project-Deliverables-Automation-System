@@ -55,6 +55,8 @@ public class SecondaryFrame extends JFrame implements ActionListener {
             secondaryFrame.add(secondaryPanel);
             //secondaryPanel.add(secondaryPane);
             //secondaryPane.add(deliverableTable);
+            
+
 
             secondaryFrame.add(secondaryPanel);
             secondaryFrame.setSize(700, 500);

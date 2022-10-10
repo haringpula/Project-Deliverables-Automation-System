@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -80,6 +81,7 @@ public class MainFrame extends JFrame implements ActionListener {
             mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             mainFrame.setVisible(true);
             //JOptionPane.showMessageDialog(null, "Deliverable Created!\n Don't forget to set an alarm on <INSERT DATE HERE>\n so you can accomplish <TASK HERE> before the deadline!", "PDAS", 3);
+            JOptionPane.showMessageDialog(null, "You are running out of will to live.", "Will to live?", 2);
 
         }
     }
