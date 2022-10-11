@@ -24,25 +24,13 @@ public record Deliverable(
         PreparedStatement sqlStatement;
         ResultSet sqlResult;
 
-        int intDeliverableCount = 0;
+        int intDeliverableCount = fetchDeliverableCount();
         int i;
 
-        String query = "SELECT COUNT(deliverable_id) AS deliverable_count FROM deliverables";
-
-        try {
-            sqlStatement = DatabaseConnection.connectToDatabase().prepareStatement(query);
-            sqlResult = sqlStatement.executeQuery();
-
-            if (sqlResult.next()) {
-                intDeliverableCount = sqlResult.getInt("deliverable_count");
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
 
         String[][] mtxDeliverables = new String[intDeliverableCount][7];
 
-        query = "SELECT deliverables.deliverable_id, categories.category_name, deliverables.deliverable_name, deliverables.deliverable_detail, deliverables.deliverable_start, deliverables.deliverable_end, statuses.status_name FROM deliverables JOIN categories ON deliverables.category_id = categories.category_id JOIN statuses ON deliverables.status_id = statuses.status_id";
+        String query = "SELECT deliverables.deliverable_id, categories.category_name, deliverables.deliverable_name, deliverables.deliverable_detail, deliverables.deliverable_start, deliverables.deliverable_end, statuses.status_name FROM deliverables JOIN categories ON deliverables.category_id = categories.category_id JOIN statuses ON deliverables.status_id = statuses.status_id";
 
         try {
             sqlStatement = DatabaseConnection.connectToDatabase().prepareStatement(query);
@@ -64,5 +52,28 @@ public record Deliverable(
         }
         return mtxDeliverables;
     }
+
+    public static int fetchDeliverableCount() {
+        PreparedStatement sqlStatement;
+        ResultSet sqlResult;
+        String query = "SELECT COUNT(deliverable_id) AS deliverable_count FROM deliverables";
+
+        int intDeliverableCount = 0;
+        try {
+            sqlStatement = DatabaseConnection.connectToDatabase().prepareStatement(query);
+            sqlResult = sqlStatement.executeQuery();
+
+            if (sqlResult.next()) {
+                intDeliverableCount = sqlResult.getInt("deliverable_count");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return intDeliverableCount;
+        
+    }
+
+
+
 
 }
