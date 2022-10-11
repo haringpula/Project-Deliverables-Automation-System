@@ -13,7 +13,6 @@ public record Deliverable(
         int intCategory,
         String strName,
         String strDetail,
-        Date dtStart,
         Date dtEnd,
         int intStatus) {
 

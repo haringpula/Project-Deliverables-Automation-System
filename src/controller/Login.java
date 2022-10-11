@@ -71,6 +71,11 @@ public class Login extends DatabaseConnection {
         
     }
 
+
+    public static String getUser() {
+        return strName;
+    }
+
     public static void startLoginFrame() {
         new LoginFrame();
     }

@@ -12,11 +12,11 @@ public class DeliverableOperations extends DatabaseConnection {
      * @param deliverable
      * @return boolean
      */
-    public boolean createOperation(Deliverable deliverable) {
+    public static boolean createOperation(Deliverable deliverable) {
         PreparedStatement sqlStatement;
         int intResult;
 
-        String query = "INSERT INTO `deliverables`(`category_id`, `deliverable_name`, `deliverable_detail`, `deliverable_start`, `deliverable_end`, `status_id`) VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO `deliverables`(`category_id`, `deliverable_name`, `deliverable_detail`, `deliverable_start`, `deliverable_end`, `status_id`) VALUES (?,?,?,NOW(),?,?)";
 
         try {
             sqlStatement = connectToDatabase().prepareStatement(query);
@@ -24,9 +24,8 @@ public class DeliverableOperations extends DatabaseConnection {
             sqlStatement.setInt(1, deliverable.intCategory());
             sqlStatement.setString(2, deliverable.strName());
             sqlStatement.setString(3, deliverable.strDetail());
-            sqlStatement.setDate(4, deliverable.dtStart());
-            sqlStatement.setDate(5, deliverable.dtEnd());
-            sqlStatement.setInt(6, deliverable.intStatus());
+            sqlStatement.setDate(4, deliverable.dtEnd());
+            sqlStatement.setInt(5, deliverable.intStatus());
 
             intResult = sqlStatement.executeUpdate();
 

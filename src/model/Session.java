@@ -87,12 +87,6 @@ public record Session(
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        for (int j = 0; j < intSessionCount; j++) {
-            for (int j2 = 0; j2 < 2; j2++) {
-                System.out.print(mtxSessions[j][j2] + " | ");
-            }
-            System.out.println();
-        }
         return mtxSessions;
     }
 
