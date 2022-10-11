@@ -102,4 +102,33 @@ public class DeliverableOperations extends DatabaseConnection {
 
     }
 
+    /**
+     * @param strName
+     * @return int
+     */
+    public static int findDeliverableId(String strName) {
+        int intId;
+        PreparedStatement sqlStatement;
+        ResultSet sqlResult;
+
+        String query = "SELECT * FROM `deliverables` WHERE `deliverable_name` =?";
+
+        try {
+            sqlStatement = connectToDatabase().prepareStatement(query);
+
+            sqlStatement.setString(1, strName);
+
+            sqlResult = sqlStatement.executeQuery();
+
+            while (sqlResult.next()) {
+                intId = sqlResult.getInt("deliverable_id");
+                return intId;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        // SEE: idk what to return if this method fails
+        return -1;
+    }
+
 }

@@ -17,7 +17,6 @@ import view.MainFrame;
 import view.SecondaryFrame;
 
 public class MainController extends DeliverableOperations {
-    private Session session;
     private static int intUser;
     private static String strUser;
 
@@ -30,29 +29,22 @@ public class MainController extends DeliverableOperations {
      * @param intStatus
      * @return boolean
      */
-    // TODO: will contain functions shared between both frames,
-    // fetch table
-    // also contain functions only for the main veiw frame.. like selectable
-    // table... implementation might vary on the view
-
-    // differientiate anong part ng deliverable ang iedit
-    // generate deliverable shits here
-    // Deliverable deliverable = new Deliverable(0, null, null, null, null, 0);
-
     public static boolean createDeliverable(int intCategory, String strName, String strDetail, String strEnd,
             int intStatus) {
         String strSessionDetail = "User ";
         Date dtEnd = strToDate(strEnd);
         Deliverable deliverable = new Deliverable(intCategory, strName, strDetail, dtEnd, intStatus);
 
-        strSessionDetail += strUser;
-        strSessionDetail += " (id ";
-        strSessionDetail += String.valueOf(intUser);
-        strSessionDetail += ") has created ";
-        strSessionDetail += strName;
-        strSessionDetail += "!";
-
         if (createOperation(deliverable)) {
+            strSessionDetail += strUser;
+            strSessionDetail += " (id ";
+            strSessionDetail += String.valueOf(intUser);
+            strSessionDetail += ") has created ";
+            strSessionDetail += strName;
+            strSessionDetail += " (id";
+            strSessionDetail += String.valueOf(findDeliverableId(strName));
+            strSessionDetail += ")!";
+
             Session session = new Session(Actions.CREATE.id, intUser, strSessionDetail, strUser);
             session.logSession();
             return true;
@@ -73,41 +65,16 @@ public class MainController extends DeliverableOperations {
     }
 
     /**
-     * @param strName
-     * @return int
+     * 
      */
-    public int findDeliverableId(String strName) {
-        int intId;
-        PreparedStatement sqlStatement;
-        ResultSet sqlResult;
-
-        String query = "SELECT * FROM `deliverables` WHERE `deliverable_name` =?";
-
-        try {
-            sqlStatement = connectToDatabase().prepareStatement(query);
-
-            sqlStatement.setString(1, strName);
-
-            sqlResult = sqlStatement.executeQuery();
-
-            while (sqlResult.next()) {
-                intId = sqlResult.getInt("deliverable_id");
-                return intId;
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        // SEE: idk what to return if this method fails
-        return -1;
-    }
-
     public static void startMainFrame() {
         intUser = Login.getID();
         strUser = Login.getUser();
+        new MainFrame();
         // HACK: display table to console out
         Scanner in = new Scanner(System.in);
         int intMenu = -1;
-        System.out.println("Welcome\n0. Exit\n1. Login\n2. Register");
+        System.out.println("Welcome\n0. Exit\n1. Create\n2. Update");
         while (true) {
             System.out.print("Enter: ");
             intMenu = in.nextInt();
@@ -119,13 +86,8 @@ public class MainController extends DeliverableOperations {
                     break;
                 case 1:
                     System.out.println();
-                    boolean b = false;
-                    try {
-                        b = createDeliverable(Categories.CONTROLLER.id, "Deliverables", null, "", Statuses.CRITICAL.id);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    if (b) {
+                    if (createDeliverable(Categories.RESOURCES.id, "Icons", "Create Icons and put in res folder",
+                            "2022-10-14", Statuses.URGENT.id)) {
                         System.out.println("Success");
                     } else {
                         System.out.println("nope");
@@ -139,12 +101,14 @@ public class MainController extends DeliverableOperations {
                     break;
             }
         }
-        // new MainFrame();
+        
     }
 
+    /**
+     * 
+     */
     public static void startSecondaryFrame() {
         intUser = Login.getID();
-        // HACK: display table to console out
         new SecondaryFrame();
     }
 
