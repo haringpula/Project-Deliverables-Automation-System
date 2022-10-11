@@ -41,7 +41,7 @@ public class MainController extends DeliverableOperations {
             strSessionDetail += String.valueOf(intUser);
             strSessionDetail += ") has created ";
             strSessionDetail += strName;
-            strSessionDetail += " (id";
+            strSessionDetail += " (id ";
             strSessionDetail += String.valueOf(findDeliverableId(strName));
             strSessionDetail += ")!";
 
@@ -51,6 +51,59 @@ public class MainController extends DeliverableOperations {
         }
         return false;
     }
+
+    /** 
+     * @param intCategory
+     * @param strName
+     * @param strDetail
+     * @param strEnd
+     * @param intStatus
+     * @return boolean
+     */
+    public static boolean updateDeliverable(int intCategory, String strName, String strDetail, String strEnd,
+            int intStatus) {
+        String strSessionDetail = "User ";
+        Date dtEnd = strToDate(strEnd);
+        int intId = findDeliverableId(strName);
+        Deliverable deliverable = new Deliverable(intCategory, strName, strDetail, dtEnd, intStatus);
+
+        if (updateOperation(deliverable, intId)) {
+            strSessionDetail += strUser;
+            strSessionDetail += " (id ";
+            strSessionDetail += String.valueOf(intUser);
+            strSessionDetail += ") has updated ";
+            strSessionDetail += strName;
+            strSessionDetail += " (id ";
+            strSessionDetail += String.valueOf(findDeliverableId(strName));
+            strSessionDetail += ")!";
+
+            Session session = new Session(Actions.UPDATE.id, intUser, strSessionDetail, strUser);
+            session.logSession();
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean deleteDeliverable(String strName) {
+        String strSessionDetail = "User ";
+        int intId = findDeliverableId(strName);
+        if (deleteOperation(intId)) {
+            strSessionDetail += strUser;
+            strSessionDetail += " (id ";
+            strSessionDetail += String.valueOf(intUser);
+            strSessionDetail += ") has deleted a deliverable (";
+            strSessionDetail += strName;
+            strSessionDetail += ")!";
+
+            Session session = new Session(Actions.DELETE.id, intUser, strSessionDetail, strUser);
+            session.logSession();
+            return true;
+        }
+        return false;
+    }
+
+
+
 
     /**
      * @param strDate
@@ -95,6 +148,12 @@ public class MainController extends DeliverableOperations {
                     break;
                 case 2:
                     System.out.println();
+                    if (updateDeliverable(Categories.CONTROLLER.id, "Deliverables", "implement with a new thing first",
+                            "2022-10-11", Statuses.CRITICAL.id)) {
+                        System.out.println("Success");
+                    } else {
+                        System.out.println("nope");
+                    }
                     break;
                 case 3:
                     String[][] mtxDeliverables = Deliverable.fetchTableData();
@@ -118,12 +177,20 @@ public class MainController extends DeliverableOperations {
                     System.out.println("Deliverables: " + Deliverable.fetchDeliverableCount());
                     System.out.println("Sessions: " + Session.fetchSessionCount());
                     break;
+                case 6:
+                    System.out.println();
+                    if (deleteDeliverable("Deliverables")) {
+                        System.out.println("Success");
+                    } else {
+                        System.out.println("nope");
+                    }
+                    break;
                 default:
                     System.out.println("Try again");
                     break;
             }
         }
-        
+
     }
 
     /**

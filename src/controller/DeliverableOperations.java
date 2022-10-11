@@ -45,7 +45,7 @@ public class DeliverableOperations extends DatabaseConnection {
      * @param intId
      * @return boolean
      */
-    public boolean updateOperation(Deliverable deliverable, int intId) {
+    public static boolean updateOperation(Deliverable deliverable, int intId) {
         PreparedStatement sqlStatement;
         int intResult;
 
@@ -78,7 +78,7 @@ public class DeliverableOperations extends DatabaseConnection {
      * @param intId
      * @return boolean
      */
-    public boolean deleteOperation(int intId) {
+    public static boolean deleteOperation(int intId) {
         PreparedStatement sqlStatement;
         int intResult;
 

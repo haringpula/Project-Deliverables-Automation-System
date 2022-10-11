@@ -62,16 +62,18 @@ public class Login extends DatabaseConnection {
         session.logSession();
     }
 
-    
-    /** 
+    /**
      * @return int
      */
     public static int getID() {
         return intUser;
-        
+
     }
 
-
+    
+    /** 
+     * @return String
+     */
     public static String getUser() {
         return strName;
     }
