@@ -4,12 +4,9 @@
  */
 package model;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javax.swing.table.DefaultTableModel;
 
 import controller.DatabaseConnection;
 

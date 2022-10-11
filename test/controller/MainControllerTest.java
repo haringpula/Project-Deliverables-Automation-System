@@ -1,7 +1,7 @@
 package controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+//import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -19,7 +19,7 @@ public class MainControllerTest {
     @Test
     @DisplayName("Getting credentials from external CSV file")
     public void givenCSV_whenGetCredentials_thenSuccess() {
-        assertEquals(2, controller.findDeliverableId("PDAS"));
+        assertEquals(2, MainController.findDeliverableId("PDAS"));
 
     }
 

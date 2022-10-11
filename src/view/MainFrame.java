@@ -5,18 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTable;
-import javax.swing.JTextPane;
-
-import com.github.lgooddatepicker.components.DatePicker;
-
-import model.Session;
 
 // TODO: MainFrame activities
 public class MainFrame extends JFrame implements ActionListener {

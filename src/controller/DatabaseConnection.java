@@ -14,7 +14,6 @@ public class DatabaseConnection {
     private static Session session;
     private static int intAction;
     private static int intUser;
-    private static String sqlDate = "NOW()";
     private static String strDetail = "User ";
     private static String strName = "";
     private static Connection connection = null;

@@ -127,8 +127,8 @@ public class DeliverableOperations extends DatabaseConnection {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        // SEE: idk what to return if this method fails
-        return -1;
+        // return a 0 when lookup fails
+        return 0;
     }
 
 }

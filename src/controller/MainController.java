@@ -1,12 +1,7 @@
 package controller;
 
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Scanner;
-
-import javax.swing.table.DefaultTableModel;
 
 import model.Actions;
 import model.Categories;
@@ -84,6 +79,11 @@ public class MainController extends DeliverableOperations {
         return false;
     }
 
+    
+    /** 
+     * @param strName
+     * @return boolean
+     */
     public static boolean deleteDeliverable(String strName) {
         String strSessionDetail = "User ";
         int intId = findDeliverableId(strName);
