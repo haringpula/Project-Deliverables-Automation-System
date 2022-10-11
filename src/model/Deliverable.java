@@ -20,48 +20,50 @@ public record Deliverable(
     /**
      * @return DefaultTableModel
      */
-    public static DefaultTableModel fetchTableData() {
-        // BUG: Fucking nuclear level refactoring required, change to String[][]
-        String[] columnNames = new String[] { "ID", "Category", "Deliverable", "Details", "Status" };
-        // Object[][] data;
-        final DefaultTableModel model = new DefaultTableModel(null, columnNames);
-        model.setColumnIdentifiers(columnNames);
+    public static String[][] fetchTableData() {
+        String[] columnNames = new String[] { "ID", "Category", "Deliverable", "Details", "Start", "End", "Status" };
         PreparedStatement sqlStatement;
         ResultSet sqlResult;
 
-        String id = "";
-        String category = "";
-        String deliverable = "";
-        String detail = "";
-        String status = "";
+        int intDeliverableCount = 0;
+        int i;
 
-        String query = "SELECT deliverables.deliverable_id, categories.category_name, deliverables.deliverable_name, deliverables.deliverable_detail, statuses.status_name FROM deliverables JOIN categories ON deliverables.category_id = categories.category_id JOIN statuses ON deliverables.status_id = statuses.status_id";
+        String query = "SELECT COUNT(deliverable_id) AS deliverable_count FROM deliverables";
 
         try {
             sqlStatement = DatabaseConnection.connectToDatabase().prepareStatement(query);
-
             sqlResult = sqlStatement.executeQuery();
 
-            int i = 0;
+            if (sqlResult.next()) {
+                intDeliverableCount = sqlResult.getInt("deliverable_count");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        String[][] mtxDeliverables = new String[intDeliverableCount][7];
+
+        query = "SELECT deliverables.deliverable_id, categories.category_name, deliverables.deliverable_name, deliverables.deliverable_detail, deliverables.deliverable_start, deliverables.deliverable_end, statuses.status_name FROM deliverables JOIN categories ON deliverables.category_id = categories.category_id JOIN statuses ON deliverables.status_id = statuses.status_id";
+
+        try {
+            sqlStatement = DatabaseConnection.connectToDatabase().prepareStatement(query);
+            sqlResult = sqlStatement.executeQuery();
+
+            i = 0;
             while (sqlResult.next()) {
-                id = sqlResult.getString("deliverable_id");
-                category = sqlResult.getString("category_name");
-                deliverable = sqlResult.getString("deliverable_name");
-                detail = sqlResult.getString("deliverable_detail");
-                status = sqlResult.getString("status_name");
-                model.addRow(new Object[] { id, category, deliverable, detail, status });
+                mtxDeliverables[i][0] = sqlResult.getString("deliverable_id");
+                mtxDeliverables[i][1] = sqlResult.getString("category_name");
+                mtxDeliverables[i][2] = sqlResult.getString("deliverable_name");
+                mtxDeliverables[i][3] = sqlResult.getString("deliverable_detail");
+                mtxDeliverables[i][4] = sqlResult.getString("deliverable_start");
+                mtxDeliverables[i][5] = sqlResult.getString("deliverable_end");
+                mtxDeliverables[i][6] = sqlResult.getString("status_name");
                 i++;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 5; j++) {
-                System.out.print(model.getValueAt(i, j) + " | ");
-            }
-            System.out.println();
-        }
-        return model;
+        return mtxDeliverables;
     }
 
 }

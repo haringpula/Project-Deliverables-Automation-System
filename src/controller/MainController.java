@@ -17,8 +17,7 @@ public class MainController extends DeliverableOperations {
     private Session session;
     private static int intUser;
 
-    
-    /** 
+    /**
      * @param intCategory
      * @param strName
      * @param strDetail
@@ -51,8 +50,7 @@ public class MainController extends DeliverableOperations {
         return false;
     }
 
-    
-    /** 
+    /**
      * @param strDate
      * @return Date
      */
@@ -85,13 +83,14 @@ public class MainController extends DeliverableOperations {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        // idk what to return if this method fails
+        // SEE: idk what to return if this method fails
         return -1;
     }
 
     public static void startMainFrame() {
         intUser = Login.getID();
         // HACK: display table to console out
+        Session.fetchSessionData();
         new MainFrame();
     }
 
