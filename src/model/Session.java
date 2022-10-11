@@ -54,25 +54,12 @@ public record Session(
         PreparedStatement sqlStatement;
         ResultSet sqlResult;
 
-        int intSessionCount = 0;
+        int intSessionCount = fetchSessionCount();
         int i;
-
-        String query = "SELECT COUNT(session_id) AS session_count FROM sessions";
-
-        try {
-            sqlStatement = DatabaseConnection.connectToDatabase().prepareStatement(query);
-            sqlResult = sqlStatement.executeQuery();
-
-            if (sqlResult.next()) {
-                intSessionCount = sqlResult.getInt("session_count");
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
 
         String[][] mtxSessions = new String[intSessionCount][2];
 
-        query = "SELECT session_date,session_detail FROM sessions";
+        String query = "SELECT session_date,session_detail FROM sessions";
 
         try {
             sqlStatement = DatabaseConnection.connectToDatabase().prepareStatement(query);
@@ -88,6 +75,29 @@ public record Session(
             ex.printStackTrace();
         }
         return mtxSessions;
+    }
+
+    /**
+     * @return int
+     */
+    public static int fetchSessionCount() {
+        PreparedStatement sqlStatement;
+        ResultSet sqlResult;
+        String query = "SELECT COUNT(session_id) AS session_count FROM sessions";
+
+        int intSessionCount = 0;
+
+        try {
+            sqlStatement = DatabaseConnection.connectToDatabase().prepareStatement(query);
+            sqlResult = sqlStatement.executeQuery();
+
+            if (sqlResult.next()) {
+                intSessionCount = sqlResult.getInt("session_count");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return intSessionCount;
     }
 
 }

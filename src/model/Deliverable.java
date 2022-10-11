@@ -27,7 +27,6 @@ public record Deliverable(
         int intDeliverableCount = fetchDeliverableCount();
         int i;
 
-
         String[][] mtxDeliverables = new String[intDeliverableCount][7];
 
         String query = "SELECT deliverables.deliverable_id, categories.category_name, deliverables.deliverable_name, deliverables.deliverable_detail, deliverables.deliverable_start, deliverables.deliverable_end, statuses.status_name FROM deliverables JOIN categories ON deliverables.category_id = categories.category_id JOIN statuses ON deliverables.status_id = statuses.status_id";
@@ -53,6 +52,9 @@ public record Deliverable(
         return mtxDeliverables;
     }
 
+    /**
+     * @return int
+     */
     public static int fetchDeliverableCount() {
         PreparedStatement sqlStatement;
         ResultSet sqlResult;
@@ -70,10 +72,7 @@ public record Deliverable(
             ex.printStackTrace();
         }
         return intDeliverableCount;
-        
+
     }
-
-
-
 
 }
