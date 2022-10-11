@@ -13,7 +13,6 @@
  */
 
 import controller.Login;
-import view.LoginFrame;
 import view.StartFrame;
 
 public class Start {

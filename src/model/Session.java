@@ -49,36 +49,51 @@ public record Session(
     /**
      * @return DefaultTableModel
      */
-    public static DefaultTableModel fetchSessionData() {
-        String[] columnNames = {"Date", "Details"};
-        final DefaultTableModel model = new DefaultTableModel();
-
-        model.setColumnIdentifiers(columnNames);
+    public static String[][] fetchSessionData() {
+        String[] columnNames = { "Date", "Details" };
         PreparedStatement sqlStatement;
         ResultSet sqlResult;
 
-        Date date;
-        String detail = "";
+        int intSessionCount = 0;
+        int i;
 
-        String query = "SELECT session_date,session_detail FROM sessions";
+        String query = "SELECT COUNT(session_id) AS session_count FROM sessions";
 
         try {
             sqlStatement = DatabaseConnection.connectToDatabase().prepareStatement(query);
-
             sqlResult = sqlStatement.executeQuery();
 
-            int i = 0;
-            while (sqlResult.next()) {
-                date = sqlResult.getDate("session_date");
-                detail = sqlResult.getString("session_detail");
-                model.addRow(new Object[] { date, detail});
-                i++;
+            if (sqlResult.next()) {
+                intSessionCount = sqlResult.getInt("session_count");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return model;
+        String[][] mtxSessions = new String[intSessionCount][2];
+
+        query = "SELECT session_date,session_detail FROM sessions";
+
+        try {
+            sqlStatement = DatabaseConnection.connectToDatabase().prepareStatement(query);
+            sqlResult = sqlStatement.executeQuery();
+
+            i = 0;
+            while (sqlResult.next()) {
+                mtxSessions[i][0] = sqlResult.getString("session_date");
+                mtxSessions[i][1] = sqlResult.getString("session_detail");
+                i++;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        for (int j = 0; j < intSessionCount; j++) {
+            for (int j2 = 0; j2 < 2; j2++) {
+                System.out.print(mtxSessions[j][j2] + " | ");
+            }
+            System.out.println();
+        }
+        return mtxSessions;
     }
 
 }
