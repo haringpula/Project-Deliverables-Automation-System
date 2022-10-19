@@ -103,8 +103,6 @@ public class MainController extends DeliverableOperations {
     }
 
 
-
-
     /**
      * @param strDate
      * @return Date
@@ -127,7 +125,7 @@ public class MainController extends DeliverableOperations {
         // HACK: display table to console out
         Scanner in = new Scanner(System.in);
         int intMenu = -1;
-        System.out.println("Welcome\n0. Exit\n1. Create\n2. Update\n3. Show Deliverables\n4. Show Sessions\n5. Counts");
+        System.out.println("Welcome\n0. Exit\n1. Create\n2. Update\n3. Show Deliverables\n4. Show Sessions\n5. Counts\n6. Delete");
         while (true) {
             System.out.print("Enter: ");
             intMenu = in.nextInt();
@@ -185,6 +183,12 @@ public class MainController extends DeliverableOperations {
                         System.out.println("nope");
                     }
                     break;
+                case 7:
+                    if (dateChecker()) {
+                        System.out.println("Success");
+                    } else {
+                        System.out.println("nope");
+                    }
                 default:
                     System.out.println("Try again");
                     break;

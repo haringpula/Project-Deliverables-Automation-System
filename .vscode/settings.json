@@ -20,5 +20,6 @@
     },
     "cSpell.words": [
         "jdbc"
-    ]
+    ],
+    "FSharp.suggestGitignore": false
 }

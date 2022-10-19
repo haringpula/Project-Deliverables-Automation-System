@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.Deliverable;
+import model.Statuses;
 
 public class DeliverableOperations extends DatabaseConnection {
 
@@ -129,6 +130,29 @@ public class DeliverableOperations extends DatabaseConnection {
         }
         // return a 0 when lookup fails
         return 0;
+    }
+
+    /**
+     * @return
+     */
+    public static boolean dateChecker() {
+        PreparedStatement sqlStatement;
+        int intResult;
+
+        String query = "UPDATE `deliverables` SET `status_id`=? WHERE `deliverable_end`<= CURDATE();";
+        try {
+            sqlStatement = connectToDatabase().prepareStatement(query);
+
+            sqlStatement.setInt(1, Statuses.CRITICAL.id);
+            intResult = sqlStatement.executeUpdate();
+
+            if (intResult > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 
 }
