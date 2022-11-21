@@ -48,17 +48,17 @@ entity Users {
 }
 
 relationship r1 {
-   Users[1] -> Sessions[?]
+   Users[1] -> Sessions[N]
 }
 
 relationship r2 {
-   Actions[1] -> Sessions[?]
+   Actions[1] -> Sessions[N]
 }
 
 relationship r3 {
-   Categories[1] -> Deliverables[?]
+   Categories[1] -> Deliverables[N]
 }
 
 relationship r4 {
-   Status[1] -> Deliverables[?]
+   Status[1] -> Deliverables[N]
 }
